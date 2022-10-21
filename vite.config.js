@@ -6,10 +6,10 @@ const config = {
 	// 	port: 3000,
 	// 	strictPort: false,
 	// },
-	// preview: {
-	// 	port: 4000,
-	// 	strictPort: false,
-	// },
+	preview: {
+		port: 3000,
+		strictPort: false,
+	},
 };
 
 export default config;

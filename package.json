@@ -27,6 +27,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@sveltejs/adapter-node": "^1.0.0-next.99",
 		"json2csv": "^5.0.7",
 		"pg": "^8.8.0"
 	}
