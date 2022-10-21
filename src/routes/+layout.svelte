@@ -1,7 +1,12 @@
 <script>
-  import Nav from "../components/nav.svelte"
+	import '../app.postcss';
+	import Nav from '../components/nav.svelte';
 </script>
 
-<Nav/>
+<header>
+	<nav />
+</header>
 
-<slot></slot>
+<main><slot /></main>
+
+<footer />
