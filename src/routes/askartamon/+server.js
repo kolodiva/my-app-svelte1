@@ -19,12 +19,12 @@ export const POST = async ({request}) => {
 	}
 
 	try {
-			// const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage`
-			// //return json(chatId)
-			// await axios.post(TELEGRAM_URI, {
-			//     chat_id: chatId,
-			//     text: messageText
-			//   })
+			const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage`
+			//return json(chatId)
+			await axios.post(TELEGRAM_URI, {
+			    chat_id: chatId,
+			    text: messageText
+			  })
 
 				return new Response( 'Done', {status: 200})
 
