@@ -4,7 +4,7 @@ import { TELEGRAM_API_TOKEN } from '$env/static/private';
 
 export const POST = async ({request}) => {
 
-	console.log(axios.isCancel('something'));
+	// console.log(axios.isCancel('something'));
 
 	let messageText;
 	let chatId;
