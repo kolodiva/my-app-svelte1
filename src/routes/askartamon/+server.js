@@ -24,11 +24,14 @@ export const POST = async ({request}) => {
 
 	try {
 			const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage`
-			//return json(chatId)
-			await axios.post(TELEGRAM_URI, {
+
+			const rsp = await json({
 			    chat_id: chatId,
 			    text: messageText
-			  })
+			  });
+
+			//return json(chatId)
+			await axios.post(TELEGRAM_URI, rsp)
 
 				return new Response( 'ok', {status: 200})
 
