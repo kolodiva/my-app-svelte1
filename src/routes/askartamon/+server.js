@@ -14,9 +14,9 @@ export const POST = async ({request}) => {
 	messageText = msg?.text?.toLowerCase()?.trim()
 	chatId = msg?.chat?.id
 
-	console.log('chatId');
-	console.log(chatId);
-	console.log(messageText);
+	// console.log('chatId');
+	// console.log(chatId);
+	// console.log(messageText);
 
 	if (!messageText || !chatId) {
   		throw error(400, 'no data')
@@ -25,10 +25,10 @@ export const POST = async ({request}) => {
 	try {
 			const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage`
 			//return json(chatId)
-			await axios.post(TELEGRAM_URI, {
+			await axios.post(TELEGRAM_URI, json({
 			    chat_id: chatId,
 			    text: messageText
-			  })
+			  }))
 
 				return new Response( 'ok', {status: 200})
 
