@@ -14,9 +14,9 @@ export const POST = async ({request}) => {
 	messageText = msg?.text?.toLowerCase()?.trim()
 	chatId = msg?.chat?.id
 
-	console.log('chatId');
-	console.log(chatId);
-	console.log(messageText);
+	// console.log('chatId');
+	// console.log(chatId);
+	// console.log(messageText);
 
 	if (!messageText || !chatId) {
   		throw error(400, 'no data')
