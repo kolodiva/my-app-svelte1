@@ -33,7 +33,7 @@ export const POST = async ({request}) => {
 			//return json(chatId)
 			await axios.post(TELEGRAM_URI, rsp)
 
-				return new Response( 'ok', {status: 200})
+				return new Response( 'Done')
 
 
 		} catch (message) {
