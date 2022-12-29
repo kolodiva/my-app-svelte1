@@ -30,7 +30,7 @@ export const POST = async ({request}) => {
 			    text: messageText
 			  })
 
-				return new Response( 'Done', {status: 200})
+				return new Response( 'ok', {status: 200})
 
 
 		} catch (message) {
