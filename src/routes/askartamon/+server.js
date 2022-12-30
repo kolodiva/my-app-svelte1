@@ -14,7 +14,7 @@ export const POST = async ({request}) => {
 	try {
 		msg = await request.json()
 
-		botMessage 	= 'Ответ: ' + msg?.message?.text?.toLowerCase()?.trim()
+		botMessage 	= 'Ответ Артамона. Сам ты: ' + msg?.message?.text?.toLowerCase()?.trim()
 		chatId 			= msg?.message?.chat?.id
 
 	} catch (message) {
