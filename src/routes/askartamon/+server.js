@@ -47,9 +47,9 @@ export const POST = async ({request}) => {
 
 	try {
 	  completion = await openai.createCompletion({
-	    model: "text-davinci-002",
+	    model: "text-davinci-003",
 	    prompt: botMessage,
-			max_tokens: 1024,
+			max_tokens: 1000,
 	  });
 	  //console.log(completion.data.choices[0].text);
 		//console.log(completion.data);
