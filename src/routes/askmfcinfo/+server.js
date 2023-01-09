@@ -34,12 +34,11 @@ export const POST = async ({request}) => {
 	}
 
 	//
-	let resAI;
 	try {
 
 			const response = await getStatShort(bitrix_id);
 
-			resAI = json(response);
+			botMessage = json(response);
 
 		} catch (message) {
 
@@ -53,7 +52,7 @@ export const POST = async ({request}) => {
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: resAI
+				 text: botMessage
 			 })
 
 		return new Response( 'Done')
