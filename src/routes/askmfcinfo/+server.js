@@ -12,7 +12,7 @@ export const POST = async ({request}) => {
 	//return new Response( resAI );
 	//return new Response( 'Done');
 
-	let botMessage;
+	let bitrix_id;
 	let chatId;
 	let msg;
 
@@ -22,7 +22,7 @@ export const POST = async ({request}) => {
 	try {
 		msg = await request.json()
 
-		botMessage 	= 'Ответ MFC. Сам ты: ' + msg?.message?.text?.toLowerCase()?.trim()
+		bitrix_id 	= msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
 
 	} catch (message) {
