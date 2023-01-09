@@ -1,3 +1,4 @@
+import { getStatShort } from '$lib/server/getData.js'
 
 import { json, error } from '@sveltejs/kit';
 import axios from 'axios';
@@ -21,7 +22,7 @@ export const POST = async ({request}) => {
 	try {
 		msg = await request.json()
 
-		botMessage 	= 'Ответ Артамона. Сам ты: ' + msg?.message?.text?.toLowerCase()?.trim()
+		botMessage 	= 'Ответ MFC. Сам ты: ' + msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
 
 	} catch (message) {
@@ -33,9 +34,18 @@ export const POST = async ({request}) => {
 	}
 
 	//
-	const resAI = botMessage;
+	let resAI;
+	try {
 
+			const response = await getStatShort(bitrix_id);
 
+			resAI = json(response);
+
+		} catch (message) {
+
+			throw error(400, message)
+
+	}
 
 	try {
 
