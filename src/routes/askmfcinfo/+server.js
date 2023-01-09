@@ -12,6 +12,7 @@ export const POST = async ({request}) => {
 	//return new Response( resAI );
 	//return new Response( 'Done');
 	let botMessage;
+	let response;
 	let bitrix_id;
 	let chatId;
 	let msg;
@@ -36,26 +37,24 @@ export const POST = async ({request}) => {
 	//
 	try {
 
-			const response = await getStatShort(bitrix_id);
-
-			// botMessage = response.json();
+			response = await getStatShort(bitrix_id);
 
 		} catch (message) {
 
-			throw error(400, 'message')
+			throw error(400, message)
 
 	}
 
 	try {
 
-		// const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN_MFC}/sendMessage`
-		//
-		// const res = await axios.post(TELEGRAM_URI, {
-		// 		 chat_id: chatId,
-		// 		 text: botMessage
-		// 	 })
+		const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN_MFC}/sendMessage`
 
-		return new Response( response )
+		const res = await axios.post(TELEGRAM_URI, {
+				 chat_id: chatId,
+				 text: JSON.stringify(response)
+			 })
+
+		return new Response('Done')
 
 				// const url = `https://api.telegram.org/bot${Token}/sendMessage?chat_id=${chatId}&text=${botMessage}`;
 				// const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage?chat_id=${chatId}&text=${botMessage}`
