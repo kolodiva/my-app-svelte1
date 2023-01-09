@@ -48,14 +48,14 @@ export const POST = async ({request}) => {
 
 	try {
 
-		const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN_MFC}/sendMessage`
+		// const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN_MFC}/sendMessage`
+		//
+		// const res = await axios.post(TELEGRAM_URI, {
+		// 		 chat_id: chatId,
+		// 		 text: botMessage
+		// 	 })
 
-		const res = await axios.post(TELEGRAM_URI, {
-				 chat_id: chatId,
-				 text: botMessage
-			 })
-
-		return new Response( 'Done')
+		return new Response( botMessage )
 
 				// const url = `https://api.telegram.org/bot${Token}/sendMessage?chat_id=${chatId}&text=${botMessage}`;
 				// const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage?chat_id=${chatId}&text=${botMessage}`
