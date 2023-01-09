@@ -11,7 +11,7 @@ export const POST = async ({request}) => {
 
 	//return new Response( resAI );
 	//return new Response( 'Done');
-
+	let botMessage;
 	let bitrix_id;
 	let chatId;
 	let msg;
