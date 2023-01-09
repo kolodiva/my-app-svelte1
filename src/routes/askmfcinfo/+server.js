@@ -65,7 +65,7 @@ export const POST = async ({request}) => {
 
 		} catch (message) {
 
-			throw error(400, message)
+			throw error(400, 'message2')
 
 	}
 
