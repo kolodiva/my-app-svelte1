@@ -72,7 +72,7 @@ order by filial1, date1 desc`)
   })
   .catch(err => {throw err})
 
-  return res⌂
+  return res
 }
 
 export async function getStatShort(bitrix_id) {
