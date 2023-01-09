@@ -38,11 +38,11 @@ export const POST = async ({request}) => {
 
 			const response = await getStatShort(bitrix_id);
 
-			botMessage = json(response);
+			botMessage = response.json();
 
 		} catch (message) {
 
-			throw error(400, message)
+			throw error(400, 'message')
 
 	}
 
