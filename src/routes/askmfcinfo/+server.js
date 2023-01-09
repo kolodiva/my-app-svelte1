@@ -36,9 +36,9 @@ export const POST = async ({request}) => {
 	//
 	try {
 
-			// const response = await getStatShort(bitrix_id);
-			//
-			// botMessage = json(response);
+			const response = await getStatShort(bitrix_id);
+
+			botMessage = json(response);
 
 		} catch (message) {
 
