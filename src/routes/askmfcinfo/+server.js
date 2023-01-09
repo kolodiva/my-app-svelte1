@@ -38,7 +38,7 @@ export const POST = async ({request}) => {
 
 			const response = await getStatShort(bitrix_id);
 
-			botMessage = response.json();
+			// botMessage = response.json();
 
 		} catch (message) {
 
@@ -55,7 +55,7 @@ export const POST = async ({request}) => {
 		// 		 text: botMessage
 		// 	 })
 
-		return new Response( botMessage )
+		return new Response( response )
 
 				// const url = `https://api.telegram.org/bot${Token}/sendMessage?chat_id=${chatId}&text=${botMessage}`;
 				// const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage?chat_id=${chatId}&text=${botMessage}`
