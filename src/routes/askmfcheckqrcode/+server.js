@@ -39,6 +39,8 @@ export const POST = async ({request}) => {
 
 		const photo = photos[photos.length - 1]
 
+		console.log(photo)
+
 		botMessage = photo.file_id
 
 		chatId = msg?.message?.chat?.id
