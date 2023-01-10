@@ -67,7 +67,7 @@ export const POST = async ({request}) => {
 
 
 			Quagga.decodeSingle({
-			    src: url,
+			    src: image.bitmap.data,
 			    numOfWorkers: 0,  // Needs to be 0 when used within node
 			    inputStream: {
 			        size: 800  // restrict input-size to be 800px in width (long-side)
