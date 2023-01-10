@@ -30,31 +30,28 @@ export const POST = async ({request}) => {
 
 			const res = await axios.post(TELEGRAM_URI, {
 					 chat_id: chatId,
-					 text: 'no photos'
+					 text: 'нужна фотка штрих-кода а не вот это все...'
 				 })
 
 			return new Response('Done')
 
-			console.log('no data')
+			//console.log('no data')
 	  		throw error(400, 'no data')
 		}
 
 		const photo = photos[photos.length - 1]
 
-		console.log(photo)
-
+		//console.log(photo)
 		botMessage = photo.file_id
-
-		chatId = msg?.message?.chat?.id
 
 	} catch (message) {
 
 		msg = 'no params'
-		console.log(message)
+		//console.log(message)
 	}
 
 	if (!botMessage || !chatId) {
-		console.log('no data2')
+		//console.log('no data2')
   		throw error(400, 'no data')
 	}
 
