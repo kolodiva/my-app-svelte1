@@ -74,6 +74,10 @@ export const POST = async ({request}) => {
        // webImg.normalize()
        // webImg.scale(2)
 
+			 const qrCodeImageArray = new Uint8ClampedArray(webImg.bitmap.data.buffer);
+
+			 console.log(qrCodeImageArray)
+
 
 
 			const len = webImg.bitmap.width * webImg.bitmap.height
@@ -91,6 +95,8 @@ export const POST = async ({request}) => {
 								const reader = new MultiFormatReader();
 
 								reader.setHints(hints);
+console.log('*****************************************')
+								console.log(luminancesUint8Array)
 
 								const luminanceSource = new RGBLuminanceSource(luminancesUint8Array, webImg.bitmap.width, webImg.bitmap.height)
 								const binaryBitmap = new BinaryBitmap(new HybridBinarizer(luminanceSource))
