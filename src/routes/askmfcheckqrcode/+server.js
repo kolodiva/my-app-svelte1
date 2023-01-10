@@ -66,22 +66,22 @@ export const POST = async ({request}) => {
 
 
 
-		 await Quagga.decodeSingle({
-		     src: url,
-		     numOfWorkers: 0,  // Needs to be 0 when used within node
-		     decoder: {
-		         readers: ["ean_reader"] // List of active readers
-		     },
-				 inputStream: {
-        		size: 800  // restrict input-size to be 800px in width (long-side)
-    		},
-		 }, function(result) {
-		     if(result.codeResult) {
-		         console.log("result", result.codeResult.code);
-		     } else {
-		         console.log("not detected");
-		     }
-		 });
+		 // await Quagga.decodeSingle({
+		 //     src: url,
+		 //     numOfWorkers: 0,  // Needs to be 0 when used within node
+		 //     decoder: {
+		 //         readers: ["ean_reader"] // List of active readers
+		 //     },
+			// 	 inputStream: {
+     //    		size: 800  // restrict input-size to be 800px in width (long-side)
+    	// 	},
+		 // }, function(result) {
+		 //     if(result.codeResult) {
+		 //         console.log("result", result.codeResult.code);
+		 //     } else {
+		 //         console.log("not detected");
+		 //     }
+		 // });
 
 
 
