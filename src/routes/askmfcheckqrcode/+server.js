@@ -69,12 +69,12 @@ export const POST = async ({request}) => {
 		 Quagga.decodeSingle({
 		     src: url,
 		     numOfWorkers: 0,  // Needs to be 0 when used within node
-		     inputStream: {
-		         size: 800  // restrict input-size to be 800px in width (long-side)
-		     },
 		     decoder: {
-		         readers: ["code_128_reader"] // List of active readers
+		         readers: ["ean_reader"] // List of active readers
 		     },
+				 inputStream: {
+        		size: 800  // restrict input-size to be 800px in width (long-side)
+    		},
 		 }, function(result) {
 		     if(result.codeResult) {
 		         console.log("result", result.codeResult.code);
