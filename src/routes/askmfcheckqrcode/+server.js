@@ -64,8 +64,9 @@ export const POST = async ({request}) => {
 
 		javascriptBarcodeReader({
   /* Image file Path || {data: Uint8ClampedArray, width, height} || HTML5 Canvas ImageData */
-  image: {data: image.bitmap.data, width: image.bitmap.width, height: image.bitmap.height},
-  barcode: url,
+  //image: {data: image.bitmap.data, width: image.bitmap.width, height: image.bitmap.height},
+	image: url,
+  barcode: 'code-93',
   // barcodeType: 'industrial',
   options: {
     // useAdaptiveThreshold: true // for images with sahded portions
