@@ -74,7 +74,7 @@ export const POST = async ({request}) => {
        // webImg.normalize()
        // webImg.scale(2)
 
-			 const qrCodeImageArray = new Uint8ClampedArray(webImg.bitmap.data.buffer);
+			 const qrCodeImageArray = new Uint8Array(webImg.bitmap.data.buffer);
 
 			 console.log(qrCodeImageArray)
 
