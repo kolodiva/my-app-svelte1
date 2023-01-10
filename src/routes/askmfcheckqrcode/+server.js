@@ -23,6 +23,16 @@ export const POST = async ({request}) => {
 		const photos = msg?.message?.photo
 
 		if (!photos || photos.length == 0) {
+
+			const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/sendMessage`
+
+			const res = await axios.post(TELEGRAM_URI, {
+					 chat_id: chatId,
+					 text: 'no photos'
+				 })
+
+			return new Response('Done')
+
 			console.log('no data')
 	  		throw error(400, 'no data')
 		}
@@ -34,6 +44,7 @@ export const POST = async ({request}) => {
 		chatId = msg?.message?.chat?.id
 
 	} catch (message) {
+
 		msg = 'no params'
 		console.log(message)
 	}
