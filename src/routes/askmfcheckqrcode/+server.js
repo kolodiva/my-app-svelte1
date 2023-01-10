@@ -57,17 +57,17 @@ export const POST = async ({request}) => {
 
 		const url = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}`
 
-		 // const image = await Jimp.read(url)
-     // // a bit of preprocessing helps on QR codes with tiny details
-     // image.normalize()
-     // image.scale(2)
+		 const image = await Jimp.read(url)
+     // a bit of preprocessing helps on QR codes with tiny details
+     image.normalize()
+     image.scale(2)
 
 		 // const value = jsQR(image.bitmap.data, image.bitmap.width, image.bitmap.height)
 
 
 
 		 Quagga.decodeSingle({
-		     src: url,
+		     src: image.bitmap.data,
 		     numOfWorkers: 0,  // Needs to be 0 when used within node
 		     decoder: {
 		         readers: ["ean_reader"] // List of active readers
