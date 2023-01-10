@@ -74,7 +74,7 @@ export const POST = async ({request}) => {
 
 		 reader.setHints(hints);
 
-		 const luminanceSource = new RGBLuminanceSource(image.bitmap.data, image.bitmap.width, image.bitmap.height);
+		 const luminanceSource = new RGBLuminanceSource(image.bitmap.width, image.bitmap.height, image.bitmap.data);
 		 const binaryBitmap = new BinaryBitmap(new HybridBinarizer(luminanceSource));
 
 		 const res11 = await reader.decode(binaryBitmap);
