@@ -97,6 +97,8 @@ export const POST = async ({request}) => {
 								const decoded = reader.decode(binaryBitmap)
 								console.log(decoded)
 
+								botMessage = decoded.text;
+
 
 
 
