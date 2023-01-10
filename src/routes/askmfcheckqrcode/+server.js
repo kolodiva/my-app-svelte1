@@ -67,10 +67,10 @@ export const POST = async ({request}) => {
     	responseType: 'arraybuffer'
   		});
 
-		 //console.log(BarcodeFormat)
+	 console.log(response)
 
 		 const hints = new Map();
-		 const formats = [BarcodeFormat.EAN_13, BarcodeFormat.QR_CODE];
+		 const formats = [BarcodeFormat.QR_CODE];
 
 		 hints.set(DecodeHintType.POSSIBLE_FORMATS, formats);
 
@@ -185,7 +185,7 @@ export const POST = async ({request}) => {
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: botMessage
+				 text: 'botMessage'
 			 })
 
 		return new Response('Done')
