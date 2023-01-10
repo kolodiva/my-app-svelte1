@@ -63,7 +63,7 @@ export const POST = async ({request}) => {
      image.normalize()
      image.scale(2)
 
-		 console.log(BarcodeFormat)
+		 //console.log(BarcodeFormat)
 
 		 const hints = new Map();
 		 const formats = [BarcodeFormat.EAN_13, BarcodeFormat.QR_CODE];
@@ -165,7 +165,8 @@ export const POST = async ({request}) => {
 	} catch (message) {
 
 		msg = 'no params'
-		//console.log('ошибка преобразования QR в текст')
+		console.log('ошибка преобразования QR в текст')
+		console.log(message)
 	}
 
 	if (!botMessage || !chatId) {
