@@ -57,12 +57,13 @@ export const POST = async ({request}) => {
 
 		//console.log(res)
 
-		const url = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}.jpg`
+		//const url = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}.jpg`
+		const url = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}`
 
-		 // const image = await Jimp.read(url)
-     //  // a bit of preprocessing helps on QR codes with tiny details
-     //  image.normalize()
-     //  image.scale(2)
+		  const image = await Jimp.read(url)
+       // a bit of preprocessing helps on QR codes with tiny details
+      image.normalize()
+      image.scale(2)
 
 
 
@@ -70,11 +71,13 @@ export const POST = async ({request}) => {
 			    src: url,
 			    numOfWorkers: 0,  // Needs to be 0 when used within node
 			    inputStream: {
-			        size: 800  // restrict input-size to be 800px in width (long-side)
+						type : "ImageStream",
+			      size: 2000  // restrict input-size to be 800px in width (long-side)
 			    },
 			    decoder: {
 			        readers: ["ean_reader"] // List of active readers
 			    },
+					locate : true,
 			}, function(result) {
 			    if(result.codeResult) {
 			        console.log("result", result.codeResult.code);
