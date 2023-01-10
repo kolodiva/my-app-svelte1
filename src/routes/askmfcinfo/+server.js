@@ -51,7 +51,7 @@ export const POST = async ({request}) => {
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: response
+				 text: response ? response || 'Нет данных по артикулу.'
 			 })
 
 		return new Response('Done')
