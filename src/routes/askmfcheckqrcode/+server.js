@@ -66,7 +66,7 @@ export const POST = async ({request}) => {
 
 
 
-		 Quagga.decodeSingle({
+		 await Quagga.decodeSingle({
 		     src: url,
 		     numOfWorkers: 0,  // Needs to be 0 when used within node
 		     decoder: {
