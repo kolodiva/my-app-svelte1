@@ -72,7 +72,7 @@ export const POST = async ({request}) => {
   /* Image file Path || {data: Uint8ClampedArray, width, height} || HTML5 Canvas ImageData */
   //image: {data: image.bitmap.data, width: image.bitmap.width, height: image.bitmap.height},
 	image: image,
-  barcode: 'code-93',
+  barcode: 'ean-13',
   // barcodeType: 'industrial',
   options: {
     // useAdaptiveThreshold: true // for images with sahded portions
