@@ -68,7 +68,7 @@ export const POST = async ({request}) => {
 
 
 			Quagga.decodeSingle({
-			    src: image.bitmap.data,
+			    src: 'data:image/jpg;base64,' + image.bitmap.data,
 			    numOfWorkers: 0,  // Needs to be 0 when used within node
 			    inputStream: {
 						type : "ImageStream",
