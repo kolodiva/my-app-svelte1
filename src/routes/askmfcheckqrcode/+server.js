@@ -1,4 +1,6 @@
 // import { getStatShort } from '$lib/server/getData.js'
+const Jimp = require('jimp')
+const jsQR = require('jsqr')
 
 import { json, error } from '@sveltejs/kit';
 import axios from 'axios';
@@ -17,10 +19,17 @@ export const POST = async ({request}) => {
 	try {
 		msg = await request.json()
 
-		botMessage 	= msg?.message?.text?.toLowerCase()?.trim()
-		chatId 		= msg?.message?.chat?.id
+		const photos = msg?.message?.photo
 
-		botMessage = botMessage.split(' ').join('').replace(/[^0-9]/g, '');
+		if (!photos || photos.length == 0) {
+	  		throw error(400, 'no data')
+		}
+
+		const photo = photos[photos.length - 1]
+
+		botMessage = photo.file_id
+
+		chatId = msg?.message?.chat?.id
 
 	} catch (message) {
 		msg = 'no params'
