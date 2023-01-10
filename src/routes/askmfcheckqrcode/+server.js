@@ -7,7 +7,7 @@ const jsQR = require('jsqr')
 //import javascriptBarcodeReader from 'javascript-barcode-reader'
 //import Quagga from 'quagga'
 //const Quagga = require('quagga').default;
-import { MultiFormatReader, BarcodeFormat, DecodeHintType } from '@zxing/library';
+import { MultiFormatReader, BarcodeFormat, DecodeHintType, RGBLuminanceSource, BinaryBitmap } from '@zxing/library';
 
 import { json, error } from '@sveltejs/kit';
 import axios from 'axios';
