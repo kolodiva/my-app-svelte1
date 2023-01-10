@@ -93,7 +93,7 @@ order by filial`)
     });
 
     //console.log(total);
-    return total;
+    return total ? total || 'Нет данных по артикулу.';
   })
   .catch(err => {throw err})
 
