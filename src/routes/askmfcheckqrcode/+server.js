@@ -1,12 +1,21 @@
 import { require } from '$lib/server/createRequire.js'
 // import { getStatShort } from '$lib/server/getData.js'
 const Jimp = require('jimp')
+
+const {BarcodeFormat,
+    MultiFormatReader,
+    DecodeHintType,
+    RGBLuminanceSource,
+    BinaryBitmap,
+    HybridBinarizer} = require('@zxing/library')
+
+
 //const jsQR = require('jsqr')
 
 //const Koder = require('@maslick/koder');
 //import javascriptBarcodeReader from 'javascript-barcode-reader'
 //import Quagga from 'quagga'
-import Quagga from '@ericblade/quagga2';
+//import Quagga from '@ericblade/quagga2';
 //const Quagga = require('quagga').default;
 // import { MultiFormatReader, BarcodeFormat, DecodeHintType, RGBLuminanceSource, BinaryBitmap, HybridBinarizer } from '@zxing/library';
 
@@ -60,31 +69,37 @@ export const POST = async ({request}) => {
 		//const url = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}.jpg`
 		const url = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}`
 
-		  const image = await Jimp.read(url)
+		  const webImg = await Jimp.read(url)
        // a bit of preprocessing helps on QR codes with tiny details
       image.normalize()
       image.scale(2)
 
 
 
-			Quagga.decodeSingle({
-			    src: 'data:image/jpg;base64,' + image.bitmap.data,
-			    numOfWorkers: 0,  // Needs to be 0 when used within node
-			    inputStream: {
-						type : "ImageStream",
-			      size: 800  // restrict input-size to be 800px in width (long-side)
-			    },
-			    decoder: {
-			        readers: ["ean_reader"] // List of active readers
-			    },
-					locate : true,
-			}, function(result) {
-			    if(result.codeResult) {
-			        console.log("result", result.codeResult.code);
-			    } else {
-			        console.log("not detected");
-			    }
-			});
+			const len = webImg.bitmap.width * webImg.bitmap.height
+								const luminancesUint8Array = new Uint8Array(len)
+								for (let i = 0; i < len; i++) {
+									luminancesUint8Array[i] = ((webImg.bitmap.data[i * 4] + webImg.bitmap.data[i * 4 + 1] * 2 + webImg.bitmap.data[
+										i *
+										4 + 2]) / 4) & 0xFF
+								}
+								const hints = new Map();
+								const formats = [BarcodeFormat.QR_CODE, BarcodeFormat.DATA_MATRIX,BarcodeFormat.PDF_417,BarcodeFormat.AZTEC, BarcodeFormat.EAN_13];
+
+								hints.set(DecodeHintType.POSSIBLE_FORMATS, formats);
+
+								const reader = new MultiFormatReader();
+
+								reader.setHints(hints);
+
+								const luminanceSource = new RGBLuminanceSource(luminancesUint8Array, webImg.bitmap.width, webImg.bitmap.height)
+								const binaryBitmap = new BinaryBitmap(new HybridBinarizer(luminanceSource))
+								const decoded = reader.decode(binaryBitmap)
+								console.log(decoded)
+
+
+
+
 
 		 // const response = await axios.get(url, {
     	// responseType: 'arraybuffer'
