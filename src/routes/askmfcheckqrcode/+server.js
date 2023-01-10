@@ -66,7 +66,7 @@ export const POST = async ({request}) => {
 		 console.log(BarcodeFormat)
 
 		 const hints = new Map();
-		 const formats = [BarcodeFormat.QR_CODE];
+		 const formats = [BarcodeFormat.EAN_13, BarcodeFormat.QR_CODE];
 
 		 hints.set(DecodeHintType.POSSIBLE_FORMATS, formats);
 
@@ -78,6 +78,8 @@ export const POST = async ({request}) => {
 		 const binaryBitmap = new BinaryBitmap(new HybridBinarizer(luminanceSource));
 
 		 const res11 = await reader.decode(binaryBitmap);
+
+		 console.log(res11)
 
 
 
