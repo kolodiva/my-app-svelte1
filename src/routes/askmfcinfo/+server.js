@@ -13,7 +13,7 @@ export const POST = async ({request}) => {
 	//return new Response( 'Done');
 	let botMessage;
 	let response;
-	let bitrix_id;
+	let artikul;
 	let chatId;
 	let msg;
 
@@ -23,7 +23,7 @@ export const POST = async ({request}) => {
 	try {
 		msg = await request.json()
 
-		bitrix_id 	= msg?.message?.text?.toLowerCase()?.trim()
+		artikul 	= msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
 
 	} catch (message) {
@@ -37,7 +37,7 @@ export const POST = async ({request}) => {
 	//
 	try {
 
-			response = await getStatShort(bitrix_id);
+			response = await getStatShort(artikul);
 
 		} catch (message) {
 
