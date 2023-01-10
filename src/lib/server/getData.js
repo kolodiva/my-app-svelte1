@@ -89,7 +89,7 @@ order by filial`)
     let count;
 
     results.rows.forEach((item, i) => {
-        total = item.name\n + 'MSC - ' + Number(item.qty1);
+        total = item.name + \n + 'MSC - ' + Number(item.qty1);
     });
 
     //console.log(total);
