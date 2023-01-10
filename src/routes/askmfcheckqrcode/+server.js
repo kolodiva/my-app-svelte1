@@ -59,13 +59,13 @@ export const POST = async ({request}) => {
 		const url = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}`
 
 		 const image = await Jimp.read(url)
-     // // a bit of preprocessing helps on QR codes with tiny details
-     // image.normalize()
-     // image.scale(2)
+      // a bit of preprocessing helps on QR codes with tiny details
+      image.normalize()
+      image.scale(2)
 
-		 const response = await axios.get(url, {
-    	responseType: 'arraybuffer'
-  		});
+		 // const response = await axios.get(url, {
+    	// responseType: 'arraybuffer'
+  		// });
 
 	 console.log(image)
 
@@ -78,7 +78,7 @@ export const POST = async ({request}) => {
 
 		 reader.setHints(hints);
 
-		 const luminanceSource = new RGBLuminanceSource(new Uint8ClampedArray(response.data), image.bitmap.width, image.bitmap.height);
+		 const luminanceSource = new RGBLuminanceSource(new Uint8ClampedArray(image.bitmap.data), image.bitmap.width, image.bitmap.height);
 		 const binaryBitmap = new BinaryBitmap(new HybridBinarizer(luminanceSource));
 
 		 const res11 = await reader.decode(binaryBitmap);
