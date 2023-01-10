@@ -3,7 +3,8 @@ import { require } from '$lib/server/createRequire.js'
 const Jimp = require('jimp')
 const jsQR = require('jsqr')
 
-const Koder = require('@maslick/koder');
+//const Koder = require('@maslick/koder');
+import javascriptBarcodeReader from 'javascript-barcode-reader'
 
 import { json, error } from '@sveltejs/kit';
 import axios from 'axios';
@@ -54,22 +55,40 @@ export const POST = async ({request}) => {
 
 		const url = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}`
 
-		const image = await Jimp.read(url)
-    // a bit of preprocessing helps on QR codes with tiny details
-    image.normalize()
-    image.scale(2)
+		javascriptBarcodeReader({
+  /* Image file Path || {data: Uint8ClampedArray, width, height} || HTML5 Canvas ImageData */
+  image: url,
+  //barcode: 'code-2of5',
+  // barcodeType: 'industrial',
+  options: {
+    // useAdaptiveThreshold: true // for images with sahded portions
+    // singlePass: true
+  }
+})
+  .then(code => {
+		botMessage = code;
+    console.log(code)
+  })
+  .catch(err => {
+    console.log(err)
+  })
 
-		// const value = jsQR(image.bitmap.data, image.bitmap.width, image.bitmap.height)
+		// const image = await Jimp.read(url)
+    // // a bit of preprocessing helps on QR codes with tiny details
+    // image.normalize()
+    // image.scale(2)
 		//
-		// if (value) {
-    //     botMessage = value.data || String.fromCharCode.apply(null, value.binaryData)
-    // } else {
-		// 		botMessage = 'преобразование НЕ вышло!!!'
-		// }
-
-		const koder = await new Koder().initialized;
-
-		const value = koder.decode(image.bitmap.data, image.bitmap.width, image.bitmap.height)
+		// // const value = jsQR(image.bitmap.data, image.bitmap.width, image.bitmap.height)
+		// //
+		// // if (value) {
+    // //     botMessage = value.data || String.fromCharCode.apply(null, value.binaryData)
+    // // } else {
+		// // 		botMessage = 'преобразование НЕ вышло!!!'
+		// // }
+		//
+		// const koder = await new Koder().initialized;
+		//
+		// const value = koder.decode(image.bitmap.data, image.bitmap.width, image.bitmap.height)
 
 		console.log(value)
 
