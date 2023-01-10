@@ -67,7 +67,7 @@ export const POST = async ({request}) => {
     	// responseType: 'arraybuffer'
   		// });
 
-	 console.log(image)
+	// console.log(image)
 
 		 const hints = new Map();
 		 const formats = [BarcodeFormat.QR_CODE];
