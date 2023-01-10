@@ -23,6 +23,7 @@ export const POST = async ({request}) => {
 		const photos = msg?.message?.photo
 
 		if (!photos || photos.length == 0) {
+			console.log('no data')
 	  		throw error(400, 'no data')
 		}
 
@@ -34,9 +35,11 @@ export const POST = async ({request}) => {
 
 	} catch (message) {
 		msg = 'no params'
+		console.log(message)
 	}
 
 	if (!botMessage || !chatId) {
+		console.log('no data2')
   		throw error(400, 'no data')
 	}
 
@@ -59,7 +62,7 @@ export const POST = async ({request}) => {
         // return await res.json();
 
 		} catch (message) {
-
+console.log('no data3')
 			throw error(400, 'message2')
 
 	}
