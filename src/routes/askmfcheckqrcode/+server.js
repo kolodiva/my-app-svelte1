@@ -71,6 +71,8 @@ export const POST = async ({request}) => {
 
 		const value = koder.decode(image.bitmap.data, image.bitmap.width, image.bitmap.height)
 
+		console.log(value)
+
 		if (value) {
         botMessage = value
     } else {
