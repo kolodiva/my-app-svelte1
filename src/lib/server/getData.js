@@ -89,7 +89,7 @@ order by filial`)
     let count;
 
     results.rows?.forEach((item, i) => {
-        total = item.name + '\n' + 'MSC - ' + Number(item.qty1);
+        total = item.name + '\n' + 'MSC - ' + Number(item.qty1) + '\n' + 'https://www.newfurnitura.ru/catalog/zamki/zamok_lock138cr_pryamougolnii_hrom_d19h22_372';
     });
 
     //console.log(total);
