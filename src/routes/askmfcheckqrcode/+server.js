@@ -67,7 +67,7 @@ export const POST = async ({request}) => {
 
 
 		 Quagga.decodeSingle({
-		     src: image.bitmap.data,
+		     src: url,
 		     numOfWorkers: 0,  // Needs to be 0 when used within node
 		     decoder: {
 		         readers: ["ean_reader"] // List of active readers
