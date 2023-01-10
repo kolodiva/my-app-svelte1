@@ -84,16 +84,12 @@ where artikul like '${artikul}'
 order by filial`)
   .then(results => {
 
-    let total = {};
+    let total = '';
 
     let count;
 
     results.rows.forEach((item, i) => {
-
-        total['name'] = item.name;
-        total['filial'] = 'MSC';
-        total['qty'] = item.qty1;
-
+        total = item.name\n + 'MSC - ' + Number(item.qty1);
     });
 
     //console.log(total);
