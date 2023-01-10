@@ -3,6 +3,8 @@ import { require } from '$lib/server/createRequire.js'
 const Jimp = require('jimp')
 const jsQR = require('jsqr')
 
+const Koder = require('@maslick/koder');
+
 import { json, error } from '@sveltejs/kit';
 import axios from 'axios';
 import { TELEGRAM_API_TOKEN_MFC_CHECK_QR } from '$env/static/private';
@@ -57,10 +59,20 @@ export const POST = async ({request}) => {
     image.normalize()
     image.scale(2)
 
-		const value = jsQR(image.bitmap.data, image.bitmap.width, image.bitmap.height)
+		// const value = jsQR(image.bitmap.data, image.bitmap.width, image.bitmap.height)
+		//
+		// if (value) {
+    //     botMessage = value.data || String.fromCharCode.apply(null, value.binaryData)
+    // } else {
+		// 		botMessage = 'преобразование НЕ вышло!!!'
+		// }
+
+		const koder = await new Koder().initialized;
+
+		const value = koder.decode(image.bitmap.data, image.bitmap.width, image.bitmap.height)
 
 		if (value) {
-        botMessage = value.data || String.fromCharCode.apply(null, value.binaryData)
+        botMessage = value
     } else {
 				botMessage = 'преобразование НЕ вышло!!!'
 		}
@@ -68,7 +80,7 @@ export const POST = async ({request}) => {
 	} catch (message) {
 
 		msg = 'no params'
-		console.log('ошибка преобразования QR в текст')
+		//console.log('ошибка преобразования QR в текст')
 	}
 
 	if (!botMessage || !chatId) {
