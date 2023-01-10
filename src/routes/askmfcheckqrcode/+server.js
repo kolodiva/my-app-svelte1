@@ -22,6 +22,8 @@ export const POST = async ({request}) => {
 
 		const photos = msg?.message?.photo
 
+		chatId = msg?.message?.chat?.id
+
 		if (!photos || photos.length == 0) {
 
 			const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/sendMessage`
