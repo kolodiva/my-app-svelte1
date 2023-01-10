@@ -78,7 +78,7 @@ export const POST = async ({request}) => {
 
 			 //console.log(qrCodeImageArray)
 
-			 const buffer = await webImg.getBufferAsync(Jimp.AUTO);
+			 //const buffer = await webImg.getBufferAsync(Jimp.AUTO);
 
 
 
@@ -100,7 +100,7 @@ export const POST = async ({request}) => {
 // console.log('*****************************************')
 // 								console.log(luminancesUint8Array)
 
-								const luminanceSource = new RGBLuminanceSource(buffer, webImg.bitmap.width, webImg.bitmap.height)
+								const luminanceSource = new RGBLuminanceSource(luminancesUint8Array, webImg.bitmap.width, webImg.bitmap.height)
 								const binaryBitmap = new BinaryBitmap(new HybridBinarizer(luminanceSource))
 								const decoded = reader.decode(binaryBitmap)
 								//console.log(decoded)
