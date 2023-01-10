@@ -1,3 +1,4 @@
+import { require } from '$lib/server/createRequire.js'
 // import { getStatShort } from '$lib/server/getData.js'
 const Jimp = require('jimp')
 const jsQR = require('jsqr')
