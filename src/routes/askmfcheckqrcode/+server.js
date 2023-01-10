@@ -38,7 +38,7 @@ export const POST = async ({request}) => {
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: response
+				 text: artikul
 			 })
 
 		return new Response('Done')
