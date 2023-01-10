@@ -8,7 +8,6 @@ export const POST = async ({request}) => {
 
 	let botMessage;
 	let response;
-	let artikul;
 	let chatId;
 	let msg;
 
@@ -18,10 +17,10 @@ export const POST = async ({request}) => {
 	try {
 		msg = await request.json()
 
-		artikul 	= msg?.message?.text?.toLowerCase()?.trim()
+		botMessage 	= msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
 
-		artikul = artikul.split(' ').join('').replace(/[^0-9]/g, '');
+		botMessage = botMessage.split(' ').join('').replace(/[^0-9]/g, '');
 
 	} catch (message) {
 		msg = 'no params'
@@ -34,14 +33,14 @@ export const POST = async ({request}) => {
 	//
 	try {
 
-		// const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/sendMessage`
-		//
-		// const res = await axios.post(TELEGRAM_URI, {
-		// 		 chat_id: chatId,
-		// 		 text: artikul
-		// 	 })
+		const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/sendMessage`
 
-		return new Response(artikul)
+		const res = await axios.post(TELEGRAM_URI, {
+				 chat_id: chatId,
+				 text: botMessage
+			 })
+
+		return new Response('Done')
 
 				// const url = `https://api.telegram.org/bot${Token}/sendMessage?chat_id=${chatId}&text=${botMessage}`;
 				// const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage?chat_id=${chatId}&text=${botMessage}`
