@@ -71,8 +71,8 @@ export const POST = async ({request}) => {
 
 		  const webImg = await Jimp.read(url)
        // a bit of preprocessing helps on QR codes with tiny details
-       webImg.normalize()
-       webImg.scale(2)
+       // webImg.normalize()
+       // webImg.scale(2)
 
 
 
