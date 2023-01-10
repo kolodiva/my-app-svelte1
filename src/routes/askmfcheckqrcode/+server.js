@@ -55,9 +55,16 @@ export const POST = async ({request}) => {
 
 		const url = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}`
 
+		 const image = await Jimp.read(url)
+     // a bit of preprocessing helps on QR codes with tiny details
+     image.normalize()
+     image.scale(2)
+
+		 // const value = jsQR(image.bitmap.data, image.bitmap.width, image.bitmap.height)
+
 		javascriptBarcodeReader({
   /* Image file Path || {data: Uint8ClampedArray, width, height} || HTML5 Canvas ImageData */
-  image: url,
+  image: {data: image.bitmap.data, width: image.bitmap.width, height: image.bitmap.height},
   barcode: 'code-2of5',
   // barcodeType: 'industrial',
   options: {
