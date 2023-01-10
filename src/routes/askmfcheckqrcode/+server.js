@@ -50,12 +50,25 @@ export const POST = async ({request}) => {
 
 		//console.log(res)
 
-		botMessage = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}`
+		const url = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}`
+
+		const image = await Jimp.read(url)
+    // a bit of preprocessing helps on QR codes with tiny details
+    image.normalize()
+    image.scale(2)
+
+		const value = jsQR(image.bitmap.data, image.bitmap.width, image.bitmap.height)
+
+		if (value) {
+        botMessage = value.data || String.fromCharCode.apply(null, value.binaryData)
+    } else {
+				botMessage = 'преобразование НЕ вышло!!!'
+		}
 
 	} catch (message) {
 
 		msg = 'no params'
-		//console.log(message)
+		console.log('ошибка преобразования QR в текст')
 	}
 
 	if (!botMessage || !chatId) {
