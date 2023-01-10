@@ -44,6 +44,12 @@ export const POST = async ({request}) => {
 		//console.log(photo)
 		botMessage = photo.file_id
 
+		const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/getFile?file_id=${botMessage}`
+
+		const res = await axios.get(TELEGRAM_URI)
+
+		botMessage = res.file_path
+
 	} catch (message) {
 
 		msg = 'no params'
