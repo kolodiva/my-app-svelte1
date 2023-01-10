@@ -78,7 +78,7 @@ order by filial1, date1 desc`)
 export async function getStatShort(artikul) {
 
   const res = await poolPG
-  .query(`select filial, artikul, artikul_new, name, qty1
+  .query(`select filial, artikul, artikul_new, name, qty1, url
 from nomenklators1
 where artikul like '${artikul}'
 order by filial`)
@@ -89,7 +89,7 @@ order by filial`)
     let count;
 
     results.rows?.forEach((item, i) => {
-        total = item.name + '\n' + 'MSC - ' + Number(item.qty1) + '\n' + 'https://www.newfurnitura.ru/catalog/zamki/zamok_lock138cr_pryamougolnii_hrom_d19h22_372';
+        total = item.name + '\n' + 'MSC - ' + Number(item.qty1) + item.url ? '\n' + item.url : '';
     });
 
     //console.log(total);
