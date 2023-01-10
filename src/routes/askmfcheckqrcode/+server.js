@@ -4,7 +4,9 @@ const Jimp = require('jimp')
 const jsQR = require('jsqr')
 
 //const Koder = require('@maslick/koder');
-import javascriptBarcodeReader from 'javascript-barcode-reader'
+//import javascriptBarcodeReader from 'javascript-barcode-reader'
+//import Quagga from 'quagga'
+const Quagga = require('quagga').default;
 
 import { json, error } from '@sveltejs/kit';
 import axios from 'axios';
@@ -55,12 +57,33 @@ export const POST = async ({request}) => {
 
 		const url = `https://api.telegram.org/file/bot${TELEGRAM_API_TOKEN_MFC_CHECK_QR}/${res?.data?.result?.file_path}`
 
-		 const image = await Jimp.read(url)
-     // a bit of preprocessing helps on QR codes with tiny details
-     image.normalize()
-     image.scale(2)
+		 // const image = await Jimp.read(url)
+     // // a bit of preprocessing helps on QR codes with tiny details
+     // image.normalize()
+     // image.scale(2)
 
 		 // const value = jsQR(image.bitmap.data, image.bitmap.width, image.bitmap.height)
+
+
+
+		 Quagga.decodeSingle({
+		     src: url,
+		     numOfWorkers: 0,  // Needs to be 0 when used within node
+		     inputStream: {
+		         size: 800  // restrict input-size to be 800px in width (long-side)
+		     },
+		     decoder: {
+		         readers: ["code_128_reader"] // List of active readers
+		     },
+		 }, function(result) {
+		     if(result.codeResult) {
+		         console.log("result", result.codeResult.code);
+		     } else {
+		         console.log("not detected");
+		     }
+		 });
+
+
 
 		 // let image = new Image();
 		 // image.crossOrigin = "Anonymous";
@@ -68,24 +91,24 @@ export const POST = async ({request}) => {
 		 //
 		 // await image.load();
 		//  image.onload = function () {
-		 javascriptBarcodeReader({
-  /* Image file Path || {data: Uint8ClampedArray, width, height} || HTML5 Canvas ImageData */
-  //image: {data: image.bitmap.data, width: image.bitmap.width, height: image.bitmap.height},
-	image: image.bitmap.data,
-  barcode: 'ean-13',
-  // barcodeType: 'industrial',
-  options: {
-    // useAdaptiveThreshold: true // for images with sahded portions
-    // singlePass: true
-  }
-})
-  .then(code => {
-		botMessage = code;
-    console.log(code)
-  })
-  .catch(err => {
-    console.log(err)
-  })
+// 		 javascriptBarcodeReader({
+//   /* Image file Path || {data: Uint8ClampedArray, width, height} || HTML5 Canvas ImageData */
+//   //image: {data: image.bitmap.data, width: image.bitmap.width, height: image.bitmap.height},
+// 	image: image.bitmap.data,
+//   barcode: 'ean-13',
+//   // barcodeType: 'industrial',
+//   options: {
+//     // useAdaptiveThreshold: true // for images with sahded portions
+//     // singlePass: true
+//   }
+// })
+//   .then(code => {
+// 		botMessage = code;
+//     console.log(code)
+//   })
+//   .catch(err => {
+//     console.log(err)
+//   })
 
 // }
 
