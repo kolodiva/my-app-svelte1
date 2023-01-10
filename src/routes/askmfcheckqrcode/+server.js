@@ -1,13 +1,14 @@
 import { require } from '$lib/server/createRequire.js'
 // import { getStatShort } from '$lib/server/getData.js'
 const Jimp = require('jimp')
-const jsQR = require('jsqr')
+//const jsQR = require('jsqr')
 
 //const Koder = require('@maslick/koder');
 //import javascriptBarcodeReader from 'javascript-barcode-reader'
 //import Quagga from 'quagga'
+import Quagga from '@ericblade/quagga2';
 //const Quagga = require('quagga').default;
-import { MultiFormatReader, BarcodeFormat, DecodeHintType, RGBLuminanceSource, BinaryBitmap, HybridBinarizer } from '@zxing/library';
+// import { MultiFormatReader, BarcodeFormat, DecodeHintType, RGBLuminanceSource, BinaryBitmap, HybridBinarizer } from '@zxing/library';
 
 import { json, error } from '@sveltejs/kit';
 import axios from 'axios';
@@ -63,33 +64,13 @@ export const POST = async ({request}) => {
       image.normalize()
       image.scale(2)
 
+			
+
 		 // const response = await axios.get(url, {
     	// responseType: 'arraybuffer'
   		// });
 
 	// console.log(image)
-
-		 const hints = new Map();
-		 const formats = [BarcodeFormat.QR_CODE];
-
-		 hints.set(DecodeHintType.POSSIBLE_FORMATS, formats);
-
-		 const reader = new MultiFormatReader();
-
-		 reader.setHints(hints);
-
-		 const luminanceSource = new RGBLuminanceSource(new Uint8ClampedArray(image.bitmap.data), image.bitmap.width, image.bitmap.height);
-		 const binaryBitmap = new BinaryBitmap(new HybridBinarizer(luminanceSource));
-
-		 const res11 = await reader.decode(binaryBitmap);
-
-		 console.log(res11)
-
-
-
-
-
-
 
 		 // const value = jsQR(image.bitmap.data, image.bitmap.width, image.bitmap.height)
 
