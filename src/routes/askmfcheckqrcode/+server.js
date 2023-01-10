@@ -189,6 +189,8 @@ export const POST = async ({request}) => {
 		msg = 'no params'
 		console.log('ошибка преобразования QR в текст')
 		console.log(message)
+
+		botMessage = 'Штрих код не удалось распознать.'
 	}
 
 	if (!botMessage || !chatId) {
