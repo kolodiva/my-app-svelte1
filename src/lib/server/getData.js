@@ -100,7 +100,11 @@ order by filial`)
   return res
 }
 
-export async function getStatDocSales() {
+export async function getStatDocSales(safe_id) {
+
+  if (SECRET_KEY2 !== safe_id) {
+    return []
+  }
 
   const res = await poolPG
   .query(`select guid, doc_type, org_inn, doc_num, doc_data, doc_sum, inn, kpp, goods
