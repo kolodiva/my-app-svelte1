@@ -100,6 +100,23 @@ order by filial`)
   return res
 }
 
+export async function getStatDocSales() {
+
+  const res = await poolPG
+  .query(`select guid, doc_type, org_inn, doc_num, doc_data, doc_sum, inn, kpp, goods
+from docs
+order by doc_data, doc_num limit 10`)
+  .then(results => {
+
+    let total = '';
+
+    return results.rows?
+  })
+  .catch(err => {throw err})
+
+  return res
+}
+
 export async function getCurs(safe_id) {
 
   if (SECRET_KEY1 !== safe_id) {
