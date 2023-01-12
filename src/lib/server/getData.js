@@ -78,7 +78,7 @@ order by filial1, date1 desc`)
 export async function getStatShort(artikul) {
 
   const res = await poolPG
-  .query(`select filial, artikul, artikul_new, name, qty1, url
+  .query(`select filial, artikul, artikul_new, name, qty1, url, price
 from nomenklators1
 where artikul like '${artikul}'
 order by filial`)
@@ -89,7 +89,7 @@ order by filial`)
     let count;
 
     results.rows?.forEach((item, i) => {
-        total = '(' + item.artikul + ') ' + item.name + '\n' + 'MSC - ' + Number(item.qty1) + (item.url ? '\n\n' + item.url : '');
+        total = '(' + item.artikul + ') ' + item.name + '\n' + 'MSC - ' + Number(item.qty1) + (item.url ? '\n\n' + item.url : '') + '\n price -> ' + Number(item.price);
     });
 
     //console.log(total);
