@@ -110,7 +110,7 @@ order by doc_data, doc_num limit 10`)
 
     let total = '';
 
-    return results.rows?
+    return results.rows;
   })
   .catch(err => {throw err})
 
