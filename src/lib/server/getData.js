@@ -89,7 +89,7 @@ order by filial`)
     let count;
 
     results.rows?.forEach((item, i) => {
-        total = '(' + item.artikul + ') ' + item.name + '\n' + 'MSC - ' + Number(item.qty1)  + '\n' + цена.розн: ' + Number(item.price) + (item.url ? '\n\n' + item.url : '');
+        total = '(' + item.artikul + ') ' + item.name + '\n' + 'MSC - ' + Number(item.qty1)  + '\n' + 'цена.розн: ' + Number(item.price) + (item.url ? '\n\n' + item.url : '');
     });
 
     //console.log(total);
