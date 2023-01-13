@@ -121,6 +121,19 @@ order by doc_data, doc_num limit 10`)
   return res
 }
 
+export async function statBitrixDocSalesLoaded(guids) {
+
+  const res = await poolPG
+  .query(`update docs set loaded = 'true' where guid in ${guids}`)
+  .then(results => {
+
+    return true;
+  })
+  .catch(err => {throw err})
+
+  return false
+}
+
 export async function getCurs(safe_id) {
 
   if (SECRET_KEY1 !== safe_id) {
