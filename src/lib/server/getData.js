@@ -112,7 +112,7 @@ export async function getStatDocSales(safe_id) {
   const res = await poolPG
   .query(`select guid, doc_type, org_inn, doc_num, doc_data, doc_sum, inn, kpp, bitrix_id, goods
 from docs
-order by doc_data, doc_num limit 100`)
+order by doc_data, doc_num limit 1000`)
   .then(results => {
 
     let total = '';
