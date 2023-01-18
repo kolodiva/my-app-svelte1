@@ -1,6 +1,9 @@
 import { poolPG } from '$lib/server/getPGConn.js'
 import { SECRET_KEY1, SECRET_KEY2 } from '$env/static/private'
 
+//универсальный механизм запросов
+export const query = (sql, params) => poolPG.query(sql, params);
+
 export async function getStat(bitrix_id) {
 
   const res = await poolPG
@@ -107,7 +110,7 @@ export async function getStatDocSales(safe_id) {
   }
 
   const res = await poolPG
-  .query(`select guid, doc_type, org_inn, doc_num, doc_data, doc_sum, inn, kpp, goods
+  .query(`select guid, doc_type, org_inn, doc_num, doc_data, doc_sum, inn, kpp, bitrix_id, goods
 from docs
 order by doc_data, doc_num limit 10`)
   .then(results => {
