@@ -90,7 +90,7 @@ export const POST = async ({request}) => {
 
 		} catch (message) {
 
-			console.log(message)
+			//console.log(message)
 
 			throw error(400, message)
 
