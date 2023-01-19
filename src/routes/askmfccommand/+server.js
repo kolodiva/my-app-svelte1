@@ -45,7 +45,7 @@ export const POST = async ({request}) => {
 
 	const {upserttaskResult} = result.rows[0]
 
-	return json(upserttaskResult)
+	//return json(upserttaskResult)
 
 
 	try {
@@ -54,7 +54,7 @@ export const POST = async ({request}) => {
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: botMessage
+				 text: upserttaskResult
 			 })
 
 		return new Response('Done')
