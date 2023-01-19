@@ -68,6 +68,8 @@ export const POST = async ({request}) => {
 	//
 	const resAI = completion.data.choices[0].text;
 
+	return new Response( resAI )
+
 
 
 	try {
