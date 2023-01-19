@@ -25,8 +25,8 @@ export const POST = async ({request}) => {
 
 		console.log(msg);
 
-		botMessage 	= msg?.message?.text?.toLowerCase()?.trim()
-		chatId 		= msg?.message?.chat?.id
+		botMessage 	= msg?.edited_message?.text?.toLowerCase()?.trim()
+		chatId 		= msg?.edited_message?.chat?.id
 
 		//console.log(chatId);
 
