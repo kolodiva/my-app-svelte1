@@ -1,4 +1,4 @@
-// import { getStatShort } from '$lib/server/getData.js'
+import { query } from '$lib/server/getData.js'
 
 import { json, error } from '@sveltejs/kit';
 import axios from 'axios';
@@ -36,16 +36,16 @@ export const POST = async ({request}) => {
   		throw error(400, 'no data')
 	}
 
-	// //
-	// try {
-	//
-	// 		response = await getStatShort(artikul);
-	//
-	// 	} catch (message) {
-	//
-	// 		throw error(400, message)
-	//
-	// }
+	sql = `SELECT upserttask($1) AS "upserttaskResult";`
+
+	console.log(JSON.stringify({chatId, botMessage}))
+
+	result = await query(sql, [ JSON.stringify({chatId, botMessage}) ])
+
+	const {upserttaskResult} = result.rows[0]
+
+	return json(upserttaskResult)
+
 
 	try {
 
