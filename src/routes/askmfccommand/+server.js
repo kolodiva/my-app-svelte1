@@ -16,6 +16,7 @@ export const POST = async ({request}) => {
 	let artikul;
 	let chatId;
 	let msg;
+	let sql;
 
 	botMessage = 'Есть контакт'
 	chatId = undefined
