@@ -39,13 +39,13 @@ export const POST = async ({request}) => {
   		throw error(400, 'no data')
 	}
 
-	const configuration = new Configuration({
-  	apiKey: OPENAI_API_KEY,
-	});
-
-	const openai = new OpenAIApi(configuration);
-
-	let completion;
+	// const configuration = new Configuration({
+  // 	apiKey: OPENAI_API_KEY,
+	// });
+	//
+	// const openai = new OpenAIApi(configuration);
+	//
+	// let completion;
 
 	// try {
 	//   completion = await openai.createCompletion({
@@ -70,8 +70,6 @@ export const POST = async ({request}) => {
 	// //
 	// const resAI = completion.data.choices[0].text;
 
-	const resAI = 'ddddddddddddddddddddddddddddddddddddd'
-
 	//return new Response( resAI )
 	try {
 
@@ -79,7 +77,7 @@ export const POST = async ({request}) => {
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: resAI
+				 text: botMessage
 			 })
 
 		return new Response( 'Done')
