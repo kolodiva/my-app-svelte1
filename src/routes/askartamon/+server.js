@@ -29,6 +29,8 @@ export const POST = async ({request}) => {
 		botMessage 	= 'Ответ Артамона. Сам ты: ' + msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
 
+		console.log(chatId);
+
 	} catch (message) {
 		msg = 'no params'
 	}
