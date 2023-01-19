@@ -33,9 +33,9 @@ export const POST = async ({request}) => {
 		msg = 'no params'
 	}
 
-	if (!botMessage || !chatId) {
-  		throw error(400, 'no data')
-	}
+	// if (!botMessage || !chatId) {
+  // 		throw error(400, 'no data')
+	// }
 
 	sql = `SELECT upserttask($1) AS "upserttaskResult";`
 
