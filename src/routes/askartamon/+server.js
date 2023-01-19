@@ -1,4 +1,8 @@
-// import { getStatShort } from '$lib/server/getData.js'
+import { require } from '$lib/server/createRequire.js'
+const { Configuration, OpenAIApi } = require("openai");
+
+import { OPENAI_API_KEY } from '$env/static/private';
+
 
 import { json, error } from '@sveltejs/kit';
 import axios from 'axios';
@@ -11,9 +15,8 @@ export const POST = async ({request}) => {
 
 	//return new Response( resAI );
 	//return new Response( 'Done');
+
 	let botMessage;
-	let response;
-	let artikul;
 	let chatId;
 	let msg;
 
@@ -21,9 +24,8 @@ export const POST = async ({request}) => {
 	chatId = undefined
 
 	try {
-		msg = await request.json()
 
-		console.log(msg);
+		msg = await request.json()
 
 		botMessage 	= msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
@@ -33,10 +35,6 @@ export const POST = async ({request}) => {
 			chatId 		= msg?.edited_message?.chat?.id
 		}
 
-		//console.log(chatId);
-
-		// artikul = artikul.split(' ').join('').replace(/[^0-9]/g, '');
-
 	} catch (message) {
 		msg = 'no params'
 	}
@@ -45,27 +43,48 @@ export const POST = async ({request}) => {
   		throw error(400, 'no data')
 	}
 
-	// //
-	// try {
-	//
-	// 		response = await getStatShort(artikul);
-	//
-	// 	} catch (message) {
-	//
-	// 		throw error(400, message)
-	//
-	// }
+	const configuration = new Configuration({
+  	apiKey: OPENAI_API_KEY,
+	});
 
+	const openai = new OpenAIApi(configuration);
+
+	let completion;
+
+	try {
+	  completion = await openai.createCompletion({
+	    model: "text-davinci-003",
+	    prompt: botMessage,
+			max_tokens: 1000,
+	  });
+	  //console.log(completion.data.choices[0].text);
+		//console.log(completion.data);
+	} catch (error) {
+
+	  if (error.response) {
+	    // console.log(error.response.status);
+	    // console.log(error.response.data);
+			throw error(400, error.response.data)
+	  } else {
+	    // console.log(error.message);
+			throw error(400, error.message)
+	  }
+	}
+
+	//
+	const resAI = completion.data.choices[0].text;
+
+	//return new Response( resAI )
 	try {
 
 		const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage`
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: botMessage
+				 text: resAI
 			 })
 
-		return new Response('Done')
+		return new Response( 'Done')
 
 				// const url = `https://api.telegram.org/bot${Token}/sendMessage?chat_id=${chatId}&text=${botMessage}`;
 				// const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage?chat_id=${chatId}&text=${botMessage}`
@@ -75,7 +94,9 @@ export const POST = async ({request}) => {
 
 		} catch (message) {
 
-			throw error(400, 'message2')
+			//console.log(message)
+
+			throw error(400, message)
 
 	}
 
