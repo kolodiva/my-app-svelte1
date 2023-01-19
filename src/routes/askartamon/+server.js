@@ -23,10 +23,12 @@ export const POST = async ({request}) => {
 	try {
 		msg = await request.json()
 
+		console.log(msg);
+
 		botMessage 	= msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
 
-		console.log(chatId);
+		//console.log(chatId);
 
 		// artikul = artikul.split(' ').join('').replace(/[^0-9]/g, '');
 
