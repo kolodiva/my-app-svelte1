@@ -68,10 +68,7 @@ export const POST = async ({request}) => {
 	//
 	const resAI = completion.data.choices[0].text;
 
-	return new Response( resAI )
-
-
-
+	//return new Response( resAI )
 	try {
 
 		const TELEGRAM_URI = `https://api.telegram.org/bot${TELEGRAM_API_TOKEN}/sendMessage`
