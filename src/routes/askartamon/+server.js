@@ -47,28 +47,30 @@ export const POST = async ({request}) => {
 
 	let completion;
 
-	try {
-	  completion = await openai.createCompletion({
-	    model: "text-davinci-003",
-	    prompt: botMessage,
-			max_tokens: 1000,
-	  });
-	  //console.log(completion.data.choices[0].text);
-		//console.log(completion.data);
-	} catch (error) {
-
-	  if (error.response) {
-	    // console.log(error.response.status);
-	    // console.log(error.response.data);
-			throw error(400, error.response.data)
-	  } else {
-	    // console.log(error.message);
-			throw error(400, error.message)
-	  }
-	}
-
+	// try {
+	//   completion = await openai.createCompletion({
+	//     model: "text-davinci-003",
+	//     prompt: botMessage,
+	// 		max_tokens: 1000,
+	//   });
+	//   //console.log(completion.data.choices[0].text);
+	// 	//console.log(completion.data);
+	// } catch (error) {
 	//
-	const resAI = completion.data.choices[0].text;
+	//   if (error.response) {
+	//     // console.log(error.response.status);
+	//     // console.log(error.response.data);
+	// 		throw error(400, error.response.data)
+	//   } else {
+	//     // console.log(error.message);
+	// 		throw error(400, error.message)
+	//   }
+	// }
+	//
+	// //
+	// const resAI = completion.data.choices[0].text;
+
+	const resAI = 'ddddddddddddddddddddddddddddddddddddd'
 
 	//return new Response( resAI )
 	try {
