@@ -54,7 +54,7 @@ export const POST = async ({request}) => {
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: upserttaskResult
+				 text: upserttaskResult.status
 			 })
 
 		return new Response('Done')
