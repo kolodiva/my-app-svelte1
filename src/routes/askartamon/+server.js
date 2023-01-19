@@ -26,6 +26,8 @@ export const POST = async ({request}) => {
 		botMessage 	= msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
 
+		console.log(chatId);
+
 		// artikul = artikul.split(' ').join('').replace(/[^0-9]/g, '');
 
 	} catch (message) {
