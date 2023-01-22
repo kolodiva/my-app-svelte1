@@ -25,9 +25,10 @@ export const GET = async (event) => {
 
 			 //const response = await getStatDocSales(safe_id);
 
-			sql = `SELECT * from insertbitrixid($1);`
-
+			//sql = `SELECT * from insertbitrixid($1);`
 			// result = await query(sql, [ JSON.stringify(data) ])
+
+			sql = `SELECT * from insertbitrixid();`
 			result = await query(sql)
 
 			// console.log(JSON.stringify(result.rows))
