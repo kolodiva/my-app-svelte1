@@ -17,7 +17,7 @@ export const GET = async (event) => {
 	//
 	try {
 
-		const {data} = await axios.get('https://mf-docs.ru/services/src/php/btx_companies.php?psw=5c84d91c-7b17-4449-8313-a9bf313af9bb');
+		// const {data} = await axios.get('https://mf-docs.ru/services/src/php/btx_companies.php?psw=5c84d91c-7b17-4449-8313-a9bf313af9bb');
 
 		//console.log(data[5])
 
@@ -27,7 +27,8 @@ export const GET = async (event) => {
 
 			sql = `SELECT * from insertbitrixid($1);`
 
-			result = await query(sql, [ JSON.stringify(data) ])
+			// result = await query(sql, [ JSON.stringify(data) ])
+			result = await query(sql)
 
 			// console.log(JSON.stringify(result.rows))
 
