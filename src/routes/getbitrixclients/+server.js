@@ -9,7 +9,7 @@ export const GET = async (event) => {
 
 	const safe_id = event.url.searchParams.get('id')
 
-	if (safe_id <> '149bcd2e-89d0-4545-91bb-2efbd3a9') {
+	if (safe_id !== '149bcd2e-89d0-4545-91bb-2efbd3a9') {
 		throw error(400, 'autorization yok!')
 	}
 
