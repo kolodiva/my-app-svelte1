@@ -1,7 +1,9 @@
 export async function handle({ event, resolve }) {
 
 if (event.url.pathname.startsWith('/custom')) {
-    return new Response('custom response');
+    const resp = new Response('custom response');
+    resp.headers.set('Access-Control-Allow-Origin', '*');
+    return resp;
   }
 
   const response = await resolve(event);
