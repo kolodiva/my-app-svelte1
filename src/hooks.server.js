@@ -5,5 +5,6 @@ if (event.url.pathname.startsWith('/custom')) {
   }
 
   const response = await resolve(event);
+  response.headers.set('Access-Control-Allow-Origin', '*');
   return response;
 }
