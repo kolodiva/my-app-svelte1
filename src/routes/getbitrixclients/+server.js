@@ -4,7 +4,7 @@ import { json, error } from '@sveltejs/kit';
 
 export const GET = async (event) => {
 
-	// http://62.109.14.230/getbitrixclients?id=149bcd2e-89d0-4545-91bb-2efbd3a9
+	// https://kolodiva.com/getbitrixclients?id=149bcd2e-89d0-4545-91bb-2efbd3a9
 
 
 	const safe_id = event.url.searchParams.get('id')
