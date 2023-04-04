@@ -4,7 +4,10 @@ import { json, error } from '@sveltejs/kit';
 
 export const GET = async (event) => {
 
-	const guid = event.url.searchParams.get('id')
+	console.log(event.params.id)
+
+	//const guid = event.url.searchParams.get('id')
+	const guid = event.params.id
 
 	let result
 	let sql;
