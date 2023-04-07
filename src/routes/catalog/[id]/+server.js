@@ -4,13 +4,7 @@ import { json, error } from '@sveltejs/kit';
 
 export const GET = async (event) => {
 
-	//console.log(process.env)
-	//console.log(event.request.headers.get('connid'))
-//console.log(event.request)
-
-	//const connid = event.url.searchParams.get('id')
-
-	const connid = event.request.headers.get('connid')
+	const connid = event.url.searchParams.get('connid')
 
 	const guid = event.params.id
 
