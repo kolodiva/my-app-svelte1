@@ -17,9 +17,11 @@ export async function handle({ event, resolve }) {
       if(event.request.method === 'OPTIONS') {
         return new Response(null, {
           headers: {
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE',
+            'Access-Control-Allow-Methods': 'OPTIONS, DELETE, POST, GET, PATCH, PUT',
             'Access-Control-Allow-Origin': 'https://new.kolodiva.com',
-            'Access-Control-Allow-Headers': 'Accept',
+            'Access-Control-Max-Age': '3600',
+            'Access-Control-Allow-Credentials' : 'true',
+            'Access-Control-Allow-Headers': 'Content-Type',
           }
         });
       }
