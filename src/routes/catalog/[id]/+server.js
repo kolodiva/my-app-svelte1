@@ -4,10 +4,12 @@ import { json, error } from '@sveltejs/kit';
 
 export const GET = async (event) => {
 
-	console.log(event.params.id)
+	//console.log(event.params.id)
 
-	//const guid = event.url.searchParams.get('id')
+	const connid = event.url.searchParams.get('id')
 	const guid = event.params.id
+
+	//console.log(connid)
 
 	let result
 	let sql;
@@ -17,7 +19,7 @@ export const GET = async (event) => {
 
 			sql = `SELECT * from getnomenkls($1);`
 
-			result = await query(sql, [ JSON.stringify({guid}) ])
+			result = await query(sql, [ JSON.stringify({guid, connid}) ])
 
 			return json(result.rows)
 
