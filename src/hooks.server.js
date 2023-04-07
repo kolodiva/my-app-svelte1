@@ -27,7 +27,8 @@ if (event.url.pathname.startsWith('/custom')) {
   // }
 
   response.headers.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
-  response.headers.set('Access-Control-Allow-Origin', '*');
+
+  response.headers.set('Access-Control-Allow-Origin', 'https://new.kolodiva.com');
 
   return response;
 }
