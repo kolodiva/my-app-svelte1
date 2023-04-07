@@ -18,7 +18,7 @@ export async function handle({ event, resolve }) {
         return new Response(null, {
           headers: {
             'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE',
-            'Access-Control-Allow-Origin': '*',
+            'Access-Control-Allow-Origin': 'https://new.kolodiva.com',
           }
         });
       }
@@ -26,10 +26,10 @@ export async function handle({ event, resolve }) {
   //     response.headers.append('Access-Control-Allow-Origin', `*`);
   // }
 
-  response.headers.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
-  response.headers.set('Allow', 'POST, GET, HEAD');
+  // response.headers.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
+  // response.headers.set('Allow', 'POST, GET, HEAD');
 
-  response.headers.set('Access-Control-Allow-Origin', '*');
+  response.headers.append('Access-Control-Allow-Origin', 'https://new.kolodiva.com');
 
   return response;
 }
