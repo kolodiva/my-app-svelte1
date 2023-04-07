@@ -27,6 +27,7 @@ export async function handle({ event, resolve }) {
   // }
 
   response.headers.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
+  response.headers.set('Allow', 'POST, GET, OPTIONS, DELETE');
 
   response.headers.set('Access-Control-Allow-Origin', '*');
 
