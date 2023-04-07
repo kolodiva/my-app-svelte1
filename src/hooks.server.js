@@ -14,19 +14,19 @@ if (event.url.pathname.startsWith('/custom')) {
   // // Apply CORS header for API routes
   // if (event.url.pathname.startsWith('/changeorder')) {
   //     // Required for CORS to work
-  //     if(event.request.method === 'OPTIONS') {
-  //       return new Response(null, {
-  //         headers: {
-  //           'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE',
-  //           'Access-Control-Allow-Origin': '*',
-  //         }
-  //       });
-  //     }
+      if(event.request.method === 'OPTIONS') {
+        return new Response(null, {
+          headers: {
+            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE',
+            'Access-Control-Allow-Origin': '*',
+          }
+        });
+      }
   //
   //     response.headers.append('Access-Control-Allow-Origin', `*`);
   // }
 
-  response.headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
+  //response.headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
   response.headers.append('Access-Control-Allow-Origin', '*');
 
   return response;
