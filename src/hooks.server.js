@@ -26,7 +26,7 @@ if (event.url.pathname.startsWith('/custom')) {
   //     response.headers.append('Access-Control-Allow-Origin', `*`);
   // }
 
-  response.headers.append('Access-Control-Allow-Methods', 'POST, GET');
+  response.headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS');
   response.headers.append('Access-Control-Allow-Origin', `*`);
 
   return response;
