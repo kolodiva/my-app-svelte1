@@ -1,10 +1,10 @@
 export async function handle({ event, resolve }) {
 
-if (event.url.pathname.startsWith('/custom')) {
-    const resp = new Response('custom response');
-    resp.headers.set('Access-Control-Allow-Origin', 'https://new.kolodiva.com');
-    return resp;
-  }
+// if (event.url.pathname.startsWith('/custom')) {
+//     const resp = new Response('custom response');
+//     resp.headers.set('Access-Control-Allow-Origin', 'https://new.kolodiva.com');
+//     return resp;
+//   }
 
   const response = await resolve(event);
   //
@@ -14,21 +14,21 @@ if (event.url.pathname.startsWith('/custom')) {
   // // Apply CORS header for API routes
   // if (event.url.pathname.startsWith('/changeorder')) {
   //     // Required for CORS to work
-      if(event.request.method === 'OPTIONS') {
-        return new Response(null, {
-          headers: {
-            'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE',
-            'Access-Control-Allow-Origin': '*',
-          }
-        });
-      }
+      // if(event.request.method === 'OPTIONS') {
+      //   return new Response(null, {
+      //     headers: {
+      //       'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE',
+      //       'Access-Control-Allow-Origin': '*',
+      //     }
+      //   });
+      // }
   //
   //     response.headers.append('Access-Control-Allow-Origin', `*`);
   // }
 
   response.headers.set('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, DELETE');
 
-  response.headers.set('Access-Control-Allow-Origin', 'https://new.kolodiva.com');
+  response.headers.set('Access-Control-Allow-Origin', '*');
 
   return response;
 }
