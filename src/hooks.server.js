@@ -19,6 +19,7 @@ export async function handle({ event, resolve }) {
           headers: {
             'Access-Control-Allow-Methods': 'POST, GET, OPTIONS, DELETE',
             'Access-Control-Allow-Origin': 'https://new.kolodiva.com',
+            'Access-Control-Allow-Headers': 'authorization',
           }
         });
       }
