@@ -39,7 +39,7 @@ if (process.env.NODE_ENV === 'development') {
             'Access-Control-Allow-Origin': origin,
             'Access-Control-Max-Age': '3600',
             'Access-Control-Allow-Credentials' : 'true',
-            'Access-Control-Allow-Headers': 'Content-Type, connid',
+            'Access-Control-Allow-Headers': 'Content-Type, Sec-Fetch-Snt',
           }
         });
       }
