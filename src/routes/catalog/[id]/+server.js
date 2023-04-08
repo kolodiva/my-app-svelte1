@@ -13,7 +13,7 @@ export const GET = async (event) => {
 	//console.log(event.request.headers.get('connid'))
 
 	//const connid = event.url.searchParams.get('connid')
-	const connid = event.request.headers.get('Sec-Fetch-Snt')
+	const connid = event.request.headers.get('Hostes')
 
 	const guid = event.params.id
 
