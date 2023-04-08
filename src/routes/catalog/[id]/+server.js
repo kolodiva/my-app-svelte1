@@ -10,9 +10,10 @@ export const GET = async (event) => {
 	// 	console.log(pos)
 	// })
 	//console.log(event.request.headers.get('cookie').replace('connectionid=', ''))
-	console.log(event.request.headers.get('connid'))
+	//console.log(event.request.headers.get('connid'))
 
-	const connid = event.url.searchParams.get('connid')
+	//const connid = event.url.searchParams.get('connid')
+	const connid = event.request.headers.get('connid')
 
 	const guid = event.params.id
 
