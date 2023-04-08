@@ -1,8 +1,16 @@
 import { query } from '$lib/server/getData.js'
 
+//import * from 'cookie'
+
 import { json, error } from '@sveltejs/kit';
 
 export const GET = async (event) => {
+
+	// event.request.headers.value.map((pos) => {
+	// 	console.log(pos)
+	// })
+	//console.log(event.request.headers.get('cookie').replace('connectionid=', ''))
+	console.log(event.request.headers.get('connid'))
 
 	const connid = event.url.searchParams.get('connid')
 
