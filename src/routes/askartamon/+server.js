@@ -81,7 +81,7 @@ export const POST = async ({request}) => {
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: 'resAI'
+				 text: 'Sorry the service is not working yet.'
 			 })
 
 		return new Response( 'Done')
