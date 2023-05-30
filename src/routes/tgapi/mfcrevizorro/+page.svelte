@@ -2,30 +2,16 @@
 	<script src="https://telegram.org/js/telegram-web-app.js"></script>
 </svelte:head>
 <script>
+	let tg = window.Telegram.WebApp; //получаем объект webapp телеграма
+
+	tg.expand(); //расширяем на все окно
+
+	tg.MainButton.text = "Changed Text"; //изменяем текст кнопки
+	tg.MainButton.setText("Changed Text1"); //изменяем текст кнопки иначе
+	tg.MainButton.textColor = "#F55353"; //изменяем цвет текста кнопки
+	tg.MainButton.color = "#143F6B"; //изменяем цвет бэкграунда кнопки
+	tg.MainButton.setParams({"color": "#143F6B"}); //так изменяются все параметры 
 </script>
 
 <div class="flex align-items-center">
-  <span class="font-bold text-lg">Points:</span>
-  <div>
-    <span class="text-xl text-yellow-400"><i class="fas fa-star"></i></span>
-    <span class="text-xl text-yellow-200"><i class="fas fa-star"></i></span>
-    <span class="text-xl text-yellow-100"><i class="fas fa-star"></i></span>
-    <span class="text-xl text-yellow-50"><i class="fas fa-star"></i></span>
-  </div>
 </div>
-
-
-<style>
-.text-yellow-400 {
-  color: #ffc107;
-}
-.text-yellow-200 {
-  color: #ffab00;
-}
-.text-yellow-100 {
-  color: #ff9800;
-}
-.text-yellow-50 {
-  color: #ff8b00;
-}
-</style>
