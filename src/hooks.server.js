@@ -52,7 +52,7 @@ if (process.env.NODE_ENV === 'development') {
 
   response.headers.append('Access-Control-Allow-Origin', origin);
   //response.headers.append('Access-Control-Allow-Origin', 'http://localhost:9100');
-  console.log(response.headers)
+  //console.log(response.headers)
 
   return response;
 }
