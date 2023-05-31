@@ -7,7 +7,7 @@ import { json, error } from '@sveltejs/kit';
 export const GET = async (event) => {
 
 	// event.request.headers.value.map((pos) => {
-	console.log(event.request.path)
+	//console.log(event.request.path)
 	// })
 	//console.log(event.request.headers.get('cookie').replace('connectionid=', ''))
 	//console.log(event.request.headers.get('connid'))
