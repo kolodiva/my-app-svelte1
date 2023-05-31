@@ -24,7 +24,7 @@ export const POST = async ({request}) => {
 		const sql = `SELECT tg_mfcrevizorro_inactive($1) AS "inactiveResult";`
 
 
-		console.log(JSON.stringify(params))
+	//	console.log(JSON.stringify(params))
 
 		const result = await query(sql, [ JSON.stringify(params) ])
 
