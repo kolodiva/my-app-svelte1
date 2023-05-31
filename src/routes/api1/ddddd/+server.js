@@ -14,5 +14,7 @@ export const POST = async ({request}) => {
 
 	const {initStartResult} = result.rows[0]
 
-	return json(initStartResult) 
+	console.log(json(initStartResult) )
+
+	return json(initStartResult)
 }
