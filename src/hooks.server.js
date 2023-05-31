@@ -7,7 +7,7 @@ export async function handle({ event, resolve }) {
 //     resp.headers.set('Access-Control-Allow-Origin', 'https://new.kolodiva.com');
 //     return resp;
 //   }
-//console.log('1111', event.HeadersList)
+console.log('1111', event.HeadersList)
 
   const response = await resolve(event);
 
