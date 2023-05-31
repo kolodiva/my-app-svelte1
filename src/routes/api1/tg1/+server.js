@@ -4,8 +4,8 @@ import { json, error } from '@sveltejs/kit';
 
 export const POST = async ({request}) => {
 
-	const params1 = await request.json()
+	const msg = await request.json()
 
-	return json({params1});
+	return json({msg});
 
 }
