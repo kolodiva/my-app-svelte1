@@ -14,8 +14,12 @@ const config = {
 		adapter: adapter(),
 		serviceWorker: {
     	register: false,
-  	}
+  	},
+		csrf: {
+			checkOrigin: false,
+		},
 	},
+
 	preprocess: vitePreprocess()
 };
 
