@@ -8,6 +8,8 @@ export const POST = async ({request}) => {
 
 	if (params.oper === 'initData') {
 
+		return json({none: "none"});
+
 		const sql = `SELECT tg_mfcrevizorro_initstart($1) AS "initStartResult";`
 
 		//console.log(msg)
@@ -21,6 +23,8 @@ export const POST = async ({request}) => {
 
 	if (params.oper === 'inActive') {
 
+		return json({none: "none"});
+
 		const sql = `SELECT tg_mfcrevizorro_inactive($1) AS "inactiveResult";`
 
 
@@ -33,6 +37,6 @@ export const POST = async ({request}) => {
 		return json(inactiveResult)
 	}
 
-	return json({});
+	return json({none: "none"});
 
 }
