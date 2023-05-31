@@ -2,10 +2,12 @@ import { query } from '$lib/server/getData.js'
 
 import { json, error } from '@sveltejs/kit';
 
-export const POST = async ({request}) => {
+export const GET = async (event) => {
 
-	const msg = await request.json()
+//export const POST = async ({request}) => {
 
-	return json({msg});
+
+
+	return json({msg:'йооооооооооооооооооооооооооо'});
 
 }
