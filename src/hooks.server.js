@@ -7,7 +7,7 @@ export async function handle({ event, resolve }) {
 //     resp.headers.set('Access-Control-Allow-Origin', 'https://new.kolodiva.com');
 //     return resp;
 //   }
-console.log('1111', event.HeadersList)
+//console.log('1111', event.HeadersList)
 
   const response = await resolve(event);
 
@@ -52,6 +52,7 @@ if (process.env.NODE_ENV === 'development') {
 
   response.headers.append('Access-Control-Allow-Origin', origin);
   //response.headers.append('Access-Control-Allow-Origin', 'http://localhost:9100');
+  console.log(response.headers)
 
   return response;
 }
