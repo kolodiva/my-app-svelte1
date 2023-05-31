@@ -6,8 +6,8 @@ export const GET = async (event) => {
 
 //export const POST = async ({request}) => {
 
-
-
-	return json({msg:'йооооооооооооооооооооооооооо'});
+//return  json([{'msg':'йооооооооооооооооооооооооооо'}])
+const res = await json([{'msg':'йооооооооооооооооооооооооооо'}]);
+return res
 
 }
