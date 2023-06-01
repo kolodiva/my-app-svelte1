@@ -33,6 +33,18 @@ export const POST = async ({request}) => {
 		return json(inactiveResult)
 	}
 
+
+		if (params.oper === 'addNewOrder') {
+
+			const sql = `SELECT tg_mfcrevizorro_addneworder($1) AS "addNewOrder";`
+
+			const result = await query(sql, [ JSON.stringify(params) ])
+
+			const {addNewOrder} = result.rows[0]
+
+			return json(addNewOrder)
+		}
+
 	return json({});
 
 }
