@@ -1,5 +1,5 @@
 <script>
-	// import '../app.postcss';
+	import '../app.css';
 	// import Nav from '../components/nav.svelte';
 </script>
 
