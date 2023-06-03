@@ -24,11 +24,13 @@ export const POST = async ({request}) => {
 		const sql = `SELECT tg_mfcrevizorro_inactive($1) AS "inactiveResult";`
 
 
-	//	console.log(JSON.stringify(params))
+		// console.log(JSON.stringify(params))
 
 		const result = await query(sql, [ JSON.stringify(params) ])
 
 		const {inactiveResult} = result.rows[0]
+
+		// console.log(inactiveResult)
 
 		return json(inactiveResult)
 	}
@@ -43,6 +45,17 @@ export const POST = async ({request}) => {
 			const {addNewOrder} = result.rows[0]
 
 			return json(addNewOrder)
+		}
+
+		if (params.oper === 'getOrderPositions') {
+
+			const sql = `SELECT tg_mfcrevizorro_getorderpositions($1) AS "getOrderPositions";`
+
+			const result = await query(sql, [ params.order_guid ])
+
+			const {getOrderPositions} = result.rows[0]
+
+			return json(getOrderPositions)
 		}
 
 	return json({});
