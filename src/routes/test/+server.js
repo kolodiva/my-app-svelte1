@@ -9,7 +9,9 @@ export const GET = async (event) => {
 
 			const response = await getStat(bitrix_id);
 
-			return json(response)
+			return json(response);
+
+			//return json({"response":"13211312123"})
 
 		} catch (message) {
 
