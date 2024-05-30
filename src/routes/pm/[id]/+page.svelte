@@ -6,7 +6,7 @@ import jQuery from 'jquery';
 
 export let data
 
-console.log(JSON.stringify(data))
+//console.log(JSON.stringify(data))
 
 onMount(() => {
 
