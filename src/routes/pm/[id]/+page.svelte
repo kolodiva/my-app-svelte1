@@ -51,9 +51,10 @@ var datto = {
 </script>
 
 <div class="flex justify-center h-full min-h-screen w-full bg-gray-800 pt-12 p-4">
+
 {#if Object.keys(data).length === 0}
 
-<div class="card w-1/3">
+<div class="card">
   <div data-aos-delay="150" class="rounded-xl bg-white p-4 text-center shadow-xl  border-4 border-red-600/60">
     <div class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full shadow-lg bg-rose-500 shadow-rose-500/40">
         <svg viewBox=" 0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"></svg>
@@ -67,7 +68,7 @@ var datto = {
 
   {:else}
 
-  <div class="card w-1/3">
+  <div class="card">
     <div data-aos-delay="150" class="rounded-xl bg-white p-4 text-center shadow-xl  border-4 border-red-600/60">
       <div class="mx-auto flex h-16 w-16 -translate-y-12 transform items-center justify-center rounded-full shadow-lg bg-rose-500 shadow-rose-500/40">
           <svg viewBox=" 0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white"></svg>
