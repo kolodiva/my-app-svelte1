@@ -18,7 +18,7 @@ const nonce = `${params.transaction.amount}|000003148440001-48440001|${params.tr
 const hash = CryptoJS.HmacSHA256(nonce, API_KEY_RAIF);
 const hash2 = CryptoJS.enc.Hex.stringify(hash);
 
-console.log(hash2);
+// console.log(hash2);
 
 if (hash1 !== hash2) {
 		return json({'res':'niht ok Bro'}, {status: 500});
@@ -30,8 +30,11 @@ if (hash1 !== hash2) {
 
 	const data = result.rows[0];
 
-	console.log(data);
+	// console.log(data.raifpaymentscallback.status);
 
-
-return json({'res':'ok'}, {status: 200});
+	if (data.raifpaymentscallback.status === 'Ok') {
+			return json({'res':'ok'}, {status: 200});
+	} else {
+		return json({'res':'niht ok Bro'}, {status: 500});
+	}
 }
