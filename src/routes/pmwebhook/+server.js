@@ -9,6 +9,8 @@ export const POST = async ({ request }) => {
 const params = await request.json()
 
 params.auth = request.headers.get('authorization');
+params.auth2 = request.headers.get('x-api-signature-sha256');
+
 
 console.log(params);
 //
