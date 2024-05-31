@@ -33,6 +33,7 @@ if (hash1 !== hash2) {
 	// console.log(data.raifpaymentscallback.status);
 
 	if (data.raifpaymentscallback.status === 'Ok') {
+		
 			return json({'res':'ok'}, {status: 200});
 	} else {
 		return json({'res':'niht ok Bro'}, {status: 500});
