@@ -19,16 +19,17 @@ function statusCheckPromise(params) {
       const status = await statusCheck(params);
 
       //console.log(status);
+			let sql;
 
       if (status && status.error) {
 
-        const sql = `update raifpayments set check_status='ERROR', checkcallback=($2)  where guid=($1) AND (check_status = 'ERROR' OR check_status is null OR check_status = '') ;`
+        sql = `update raifpayments set check_status='ERROR', checkcallback=($2)  where guid=($1) AND (check_status = 'ERROR' OR check_status is null OR check_status = '') ;`
 
       	query(sql, [ params.id, status ])
 
       } else {
 
-        const sql = `update raifpayments set check_status='"SUCCESS"', checkcallback=($2) where guid=($1) ;`
+        sql = `update raifpayments set check_status='"SUCCESS"', checkcallback=($2) where guid=($1) ;`
 
         query(sql, [ params.id, status ])
       }
@@ -74,7 +75,7 @@ if (hash1 !== hash2) {
 
 	    //если ОШибка при создании чека записываем ее в базу по GUID
 	    //console.log(result);
-	    const sql = `update raifpayments set check_status='ERROR', checkcallback=($2) where guid=($1) AND (check_status = 'ERROR' OR check_status is null OR check_status = '') ;`
+	    sql = `update raifpayments set check_status='ERROR', checkcallback=($2) where guid=($1) AND (check_status = 'ERROR' OR check_status is null OR check_status = '') ;`
 
 	  	await query(sql, [ params.id, result ])
 
