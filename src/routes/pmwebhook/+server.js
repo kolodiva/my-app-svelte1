@@ -54,10 +54,12 @@ if (hash1 !== hash2) {
 		return json({'res':'niht ok Bro'}, {status:500});
 	}
 
-	//регистрруем Оплату и берем в ответе табл чакст ьдля чека
-	const sql = `SELECT raifpaymentscallback($1);`
+	let sql, result;
 
-	const result = await query(sql, [ params ])
+	//регистрруем Оплату и берем в ответе табл чакст ьдля чека
+	sql = `SELECT raifpaymentscallback($1);`
+
+	result = await query(sql, [ params ])
 
 	const data = result.rows[0];
 
@@ -66,7 +68,7 @@ if (hash1 !== hash2) {
 	if (data.raifpaymentscallback.status === 'Ok') {
 
 		//
-		const result = await createCheck(data.raifpaymentscallback.check);
+		result = await createCheck(data.raifpaymentscallback.check);
 
 	  if (result.error) {
 
