@@ -62,7 +62,8 @@ export async function createCheck(params) {
 
 	} catch (error) {
 
-    console.log(error)
+    console.log('11111111111111111111111');
+    console.log(error);
     let msgError;
 
     if (error instanceof OrangeDataError) {
