@@ -62,15 +62,15 @@ export async function createCheck(params) {
 
 	} catch (error) {
 
-    console.log('11111111111111111111111');
-    console.log(error);
     let msgError;
 
     if (error instanceof OrangeDataError) {
 
 
 		    // OrangeData errors contains additional info in `errors` property of type Array
-		      //console.log(error.message, error.errors);
+        console.log('11111111111111111111111');
+        console.log(error);
+		      console.log(error.message, error.errors);
           msgError = error.message + " " + (error.errors ? error.errors : "");
           //console.log(msgError);
 	       } else {
