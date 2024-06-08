@@ -56,14 +56,13 @@ export async function createCheck(params) {
     //
     //console.log(order)
 
-
     //
 		await agent.sendOrder(order);
 
 	} catch (error) {
 
-    console.log('11111111111111111111111');
-    console.log(error);
+    // console.log('11111111111111111111111');
+    // console.log(error);
 
     let msgError;
 
