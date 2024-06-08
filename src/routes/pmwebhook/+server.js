@@ -74,7 +74,8 @@ if (hash1 !== hash2) {
 	  if (result.error) {
 
 	    //если ОШибка при создании чека записываем ее в базу по GUID
-	    //console.log(result);
+	    console.log(result);
+			
 	    sql = `update raifpayments set check_status='ERROR', checkcallback=($2) where guid=($1) AND (check_status = 'ERROR' OR check_status is null OR check_status = '') ;`
 
 	  	await query(sql, [ params.id, result ])
