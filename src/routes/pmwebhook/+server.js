@@ -48,7 +48,7 @@ const nonce = `${params.transaction.amount}|000003148440001-48440001|${params.tr
 const hash = CryptoJS.HmacSHA256(nonce, API_KEY_RAIF);
 const hash2 = CryptoJS.enc.Hex.stringify(hash);
 
- //console.log(hash2);
+ console.log(hash2);
 
 if (hash1 !== hash2) {
 		return json({'res':'niht ok Bro'}, {status: 500});
