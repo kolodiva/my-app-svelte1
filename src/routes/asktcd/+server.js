@@ -1,4 +1,5 @@
-import { getStatShort } from '$lib/server/getData.js'
+
+import { query } from '$lib/server/getData.js'
 
 import { json, error } from '@sveltejs/kit';
 import axios from 'axios';
@@ -13,9 +14,9 @@ export const POST = async ({request}) => {
 	//return new Response( 'Done');
 	let botMessage;
 	let response;
-	let artikul;
 	let chatId;
 	let msg;
+	let sql;
 
 	botMessage = 'Есть контакт'
 	chatId = undefined
@@ -25,7 +26,6 @@ export const POST = async ({request}) => {
 
 		botMessage 	= '/asktcd' + " " + msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
-
 
 	} catch (message) {
 		msg = 'no params'
@@ -40,13 +40,16 @@ export const POST = async ({request}) => {
 
 		sql = `SELECT upserttask($1) AS "upserttaskResult";`
 
-		//console.log(JSON.stringify({chatId, botMessage}))
-
 		const result = await query(sql, [ JSON.stringify({chatId, botMessage}) ])
 
 		const {upserttaskResult} = result.rows[0]
 
+		//console.log(upserttaskResult)
+		//return new Response('Done')
+
 		} catch (message) {
+
+			console.log(message);
 
 			throw error(400, message)
 
