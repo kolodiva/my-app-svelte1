@@ -23,7 +23,7 @@ export const POST = async ({request}) => {
 	try {
 		msg = await request.json()
 
-		botMessage 	= msg?.message?.text?.toLowerCase()?.trim()
+		botMessage 	= '/asktcd' + " " + msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
 
 
