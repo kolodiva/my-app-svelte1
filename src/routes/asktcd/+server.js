@@ -41,7 +41,7 @@ export const POST = async ({request}) => {
 
 		sql = `SELECT upserttask($1) AS "upserttaskResult";`
 
-		//console.log(JSON.stringify({chatId, botMessage}))
+		console.log(JSON.stringify({chatId, botMessage}))
 
 		const result = await query(sql, [ JSON.stringify({chatId, botMessage}) ])
 
