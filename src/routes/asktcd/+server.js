@@ -23,10 +23,9 @@ export const POST = async ({request}) => {
 	try {
 		msg = await request.json()
 
-		artikul 	= msg?.message?.text?.toLowerCase()?.trim()
+		botMessage 	= msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
 
-		artikul = artikul.split(' ').join('').replace(/[^0-9]/g, '');
 
 	} catch (message) {
 		msg = 'no params'
@@ -41,7 +40,7 @@ export const POST = async ({request}) => {
 
 		sql = `SELECT upserttask($1) AS "upserttaskResult";`
 
-		console.log(JSON.stringify({chatId, botMessage}))
+		//console.log(JSON.stringify({chatId, botMessage}))
 
 		const result = await query(sql, [ JSON.stringify({chatId, botMessage}) ])
 
@@ -49,7 +48,7 @@ export const POST = async ({request}) => {
 
 		} catch (message) {
 
-			throw error(400, message + ' -> ' + JSON.stringify({chatId, botMessage}))
+			throw error(400, message)
 
 	}
 
