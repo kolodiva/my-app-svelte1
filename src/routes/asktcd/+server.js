@@ -38,11 +38,14 @@ export const POST = async ({request}) => {
 	//
 	try {
 
-		sql = `SELECT upserttask($1) AS "upserttaskResult";`
+		//sql = `SELECT upserttask($1) AS "upserttaskResult";`
+		sql = `insert into commands(chat_id, info) values($1, $2)`;
 
-		const result = await query(sql, [ JSON.stringify({chatId, botMessage}) ])
+		await query(sql, [ chatId, botMessage ])
 
-		const {upserttaskResult} = result.rows[0]
+		//const result = await query(sql, [ JSON.stringify([ chatId, botMessage ])
+
+		//const {upserttaskResult} = result.rows[0]
 
 		//console.log(upserttaskResult)
 		//return new Response('Done')
@@ -61,8 +64,8 @@ export const POST = async ({request}) => {
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: upserttaskResult.status
-			 })
+				 text: "Задача добавлена"
+		})
 
 		return new Response('Done')
 
