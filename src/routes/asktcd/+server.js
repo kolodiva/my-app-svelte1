@@ -22,7 +22,13 @@ export const POST = async ({request}) => {
 	chatId = undefined
 
 	try {
+
 		msg = await request.json()
+
+		sql = `insert into commands(chat_id, tmperror) values($1, $2)`;
+
+		await query(sql, [ 111111111, msg ])
+
 
 		botMessage 	= '/asktcd' + " " + msg?.message?.text?.toLowerCase()?.trim()
 		chatId 		= msg?.message?.chat?.id
