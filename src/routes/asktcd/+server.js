@@ -25,9 +25,9 @@ export const POST = async ({request}) => {
 
 		msg = await request.json()
 
-		sql = `insert into commands(chat_id, info, tmperror) values($1, $2, $3)`;
-
-		await query(sql, [ 111111111, '/mimoerr', msg ])
+		// sql = `insert into commands(chat_id, info, tmperror) values($1, $2, $3)`;
+		//
+		// await query(sql, [ 111111111, '/mimoerr', msg ])
 
 
 		botMessage 	= '/asktcd' + " " + msg?.message?.text?.toLowerCase()?.trim()
