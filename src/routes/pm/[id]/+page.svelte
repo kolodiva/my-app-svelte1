@@ -14,15 +14,20 @@ onMount(() => {
 
 window.$ = jQuery;  //could use anything here: window.jQuery = jQuery;
 
-const paymentPage = new PaymentPageSdk('000003148440001-48440001', {
-        url: 'https://pay-test.raif.ru/pay'
+//тестовый
+// const paymentPage = new PaymentPageSdk('000003148440001-48440001', {
+//         url: 'https://pay-test.raif.ru/pay'
+//     });
+//
+//     window.paymentPage = paymentPage;
+// });
+
+//реальный
+const paymentPage = new PaymentPageSdk('000001793199001-93199001', {
+        url: 'https://pay.raif.ru/pay'
     });
 
-    //console.log(paymentPage);
-
     window.paymentPage = paymentPage;
-
-
 });
 
 

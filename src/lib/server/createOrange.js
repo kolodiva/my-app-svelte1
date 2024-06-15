@@ -16,7 +16,11 @@ function getOrderObj() {
   const ca           = fs.readFileSync(path.join( path.join(pathtokey, 'cacert.pem' )));
   const privateKey   = fs.readFileSync(path.join( path.join(pathtokey, 'private_key.pem')));
 
-  const apiUrl       = 'https://apip.orangedata.ru:12001/api/v2';
+  //тестовый
+  //const apiUrl       = 'https://apip.orangedata.ru:12001/api/v2';
+
+  //реальный адрес
+  const apiUrl       = 'https://apip.orangedata.ru:12003/api/v2';
 
   const agent = new OrangeData({ apiUrl, cert, key, passphrase, ca, privateKey });
 
