@@ -84,7 +84,7 @@ var datto = {
       <p class="px-4 text-gray-500">Для этого Вам необходимо нажать на кнопку ниже</p>
 
       <button on:click={submitform} class="flex-1 mt-3 rounded-full border-2 border-blue-600/60 dark:border-gray-700 font-semibold text-black dark:text-white px-4 py-2">
-        <span class="text-gray-500">Только ВперЁдЪ</span>
+        <span class="text-gray-500">Перейти на страницу оплаты Райфайзен банка</span>
       </button>
 
     </div>
