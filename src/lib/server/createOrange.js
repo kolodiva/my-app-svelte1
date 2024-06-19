@@ -73,7 +73,7 @@ export async function createCheck(params) {
 	} catch (error) {
 
     // console.log('11111111111111111111111');
-    // console.log(error);
+    console.log(error);
 
     let msgError;
 

@@ -89,6 +89,8 @@ if (hash1 !== hash2) {
 	    //возвращаем райфу 500 считаем что чек не создался по тех причинам и надо его пересоздать но инициатором будет райф
 
       if (result.msg && result.msg.trim() == 'Чек с данным идентификатором уже был создан в системе') {
+          statusCheckPromise(data.raifpaymentscallback.check);
+          return json({'res': data.raifpaymentscallback}, {status: 200});
 	    } else {
 	        return json( {'res' : 'niht OK', result} , {status: 500});
 	    }
