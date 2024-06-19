@@ -68,10 +68,12 @@ if (hash1 !== hash2) {
 
 	const data = result.rows[0];
 
-	//return json({'res': data.raifpaymentscallback.check}, {status: 200});
   //console.log(data.raifpaymentscallback.check);
 
 	if (data.raifpaymentscallback.status === 'Ok') {
+
+    //пока временно без чека так как при его печати какие то ошибки и его нужно уже отлавливать Постманом 
+    return json({'res': data.raifpaymentscallback.check}, {status: 200});
 
 		//
 		result = await createCheck(data.raifpaymentscallback.check);
