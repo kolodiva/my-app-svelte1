@@ -44,7 +44,11 @@ const params = await request.json()
 
 const hash1 = request.headers.get('x-api-signature-sha256');
 
-const nonce = `${params.transaction.amount}|000003148440001-48440001|${params.transaction.orderId}|${params.transaction.status.value}|${params.transaction.status.date}`;
+//тест
+//const nonce = `${params.transaction.amount}|000003148440001-48440001|${params.transaction.orderId}|${params.transaction.status.value}|${params.transaction.status.date}`;
+
+const nonce = `${params.transaction.amount}|000001793199001-93199001|${params.transaction.orderId}|${params.transaction.status.value}|${params.transaction.status.date}`;
+
 
 const hash = CryptoJS.HmacSHA256(nonce, API_KEY_RAIF);
 const hash2 = CryptoJS.enc.Hex.stringify(hash);
@@ -52,7 +56,7 @@ const hash2 = CryptoJS.enc.Hex.stringify(hash);
 //console.log(hash2);
 
 if (hash1 !== hash2) {
-		return json({'res':'niht ok Bro'}, {status:500});
+		return json({'res':'niht ok Bro, hash hash'}, {status:500});
 	}
 
 	let sql, result;
@@ -64,7 +68,8 @@ if (hash1 !== hash2) {
 
 	const data = result.rows[0];
 
-	// console.log(data.raifpaymentscallback.status);
+	//return json({'res': data.raifpaymentscallback.check}, {status: 200});
+  //console.log(data.raifpaymentscallback.check);
 
 	if (data.raifpaymentscallback.status === 'Ok') {
 
@@ -82,7 +87,8 @@ if (hash1 !== hash2) {
 
 	  	//const data = resultsql.rows[0];
 	    //возвращаем райфу 500 считаем что чек не создался по тех причинам и надо его пересоздать но инициатором будет райф
-	    if (result.msg.trim() == 'Чек с данным идентификатором уже был создан в системе') {
+
+      if (result.msg && result.msg.trim() == 'Чек с данным идентификатором уже был создан в системе') {
 	    } else {
 	        return json( {'res' : 'niht OK', result} , {status: 500});
 	    }

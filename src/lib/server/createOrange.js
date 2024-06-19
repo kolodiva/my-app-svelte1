@@ -10,17 +10,23 @@ function getOrderObj() {
 
   const pathtokey = path.resolve('src/lib/server/keys');
 
-  const cert         = fs.readFileSync( path.join(pathtokey, 'client.crt') );
-  const key          = fs.readFileSync( path.join(pathtokey, 'client.key') );
+  // const cert         = fs.readFileSync( path.join(pathtokey, 'client.crt') );
+  // const key          = fs.readFileSync( path.join(pathtokey, 'client.key') );
+  // const passphrase   = '1234';
+  // const ca           = fs.readFileSync(path.join( path.join(pathtokey, 'cacert.pem' )));
+  // const privateKey   = fs.readFileSync(path.join( path.join(pathtokey, 'private_key.pem')));
+
+  const cert         = fs.readFileSync( path.join(pathtokey, '5047135115.crt') );
+  const key          = fs.readFileSync( path.join(pathtokey, '5047135115.key') );
   const passphrase   = '1234';
   const ca           = fs.readFileSync(path.join( path.join(pathtokey, 'cacert.pem' )));
-  const privateKey   = fs.readFileSync(path.join( path.join(pathtokey, 'private_key.pem')));
+  const privateKey   = fs.readFileSync(path.join( path.join(pathtokey, 'rsa_2048_private_key.pem')));
 
   //тестовый
   //const apiUrl       = 'https://apip.orangedata.ru:12001/api/v2';
 
   //реальный адрес
-  const apiUrl       = 'https://apip.orangedata.ru:12003/api/v2';
+  const apiUrl       = 'https://api.orangedata.ru:12003/api/v2';
 
   const agent = new OrangeData({ apiUrl, cert, key, passphrase, ca, privateKey });
 
@@ -43,6 +49,7 @@ export async function createCheck(params) {
 		  id: params.id,
 		  inn: params.inn,
 			key: params.key,
+      group: params.group,
 		  type: params.content.type, // Приход 1
 		  taxationSystem: params.content.checkClose.taxationSystem, // Общая 0
 			customerContact: params.content.customerContact,
