@@ -55,9 +55,9 @@ const hash2 = CryptoJS.enc.Hex.stringify(hash);
 
 //console.log(hash2);
 
-if (hash1 !== hash2) {
-		return json({'res':'niht ok Bro, hash hash'}, {status:500});
-	}
+// if (hash1 !== hash2) {
+// 		return json({'res':'niht ok Bro, hash hash'}, {status:500});
+// 	}
 
 	let sql, result;
 
