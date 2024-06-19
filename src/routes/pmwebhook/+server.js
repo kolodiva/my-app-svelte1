@@ -72,8 +72,8 @@ if (hash1 !== hash2) {
 
 	if (data.raifpaymentscallback.status === 'Ok') {
 
-    //пока временно без чека так как при его печати какие то ошибки и его нужно уже отлавливать Постманом 
-    return json({'res': data.raifpaymentscallback.check}, {status: 200});
+    //пока временно без чека так как при его печати какие то ошибки и его нужно уже отлавливать Постманом
+    //return json({'res': data.raifpaymentscallback.check}, {status: 200});
 
 		//
 		result = await createCheck(data.raifpaymentscallback.check);
@@ -89,9 +89,9 @@ if (hash1 !== hash2) {
 
 	  	//const data = resultsql.rows[0];
 	    //возвращаем райфу 500 считаем что чек не создался по тех причинам и надо его пересоздать но инициатором будет райф
+      statusCheckPromise(data.raifpaymentscallback.check);
 
       if (result.msg && result.msg.trim() == 'Чек с данным идентификатором уже был создан в системе') {
-          statusCheckPromise(data.raifpaymentscallback.check);
           return json({'res': data.raifpaymentscallback}, {status: 200});
 	    } else {
 	        return json( {'res' : 'niht OK', result} , {status: 500});
