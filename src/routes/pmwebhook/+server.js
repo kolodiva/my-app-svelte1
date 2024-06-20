@@ -98,7 +98,9 @@ if (params.cottore && params.cottore === 'cottore') {
         //return json({'res': data.raifpaymentscallback}, {status: 200});
         //возвращаем райфу 500 чтбы он делал это периодично пока не фискализируется чек
           //return json({'res': data.raifpaymentscallback}, {status: 500});
-          return json({'res': result.msg}, {status: 500});
+          data.raifpaymentscallback.check.checkerror = result.msg;
+
+          return json({'res': data.raifpaymentscallback.check}, {status: 500});
 	    } else {
 	        return json( {'res' : 'niht OK', result} , {status: 500});
 	    }
