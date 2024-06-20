@@ -33,7 +33,7 @@ function statusCheckPromise(params) {
 
         query(sql, [ params.id, status ])
       }
-    }, 5*1000)
+    }, 10*1000)
   });
 }
 
