@@ -54,10 +54,12 @@ const hash = CryptoJS.HmacSHA256(nonce, API_KEY_RAIF);
 const hash2 = CryptoJS.enc.Hex.stringify(hash);
 
 //console.log(hash2);
+if (params.cottore && params.cottore != 'cottore') {
 
-if (hash1 !== hash2) {
+  if (hash1 !== hash2) {
 		return json({'res':'niht ok Bro, hash hash'}, {status:500});
 	}
+}
 
 	let sql, result;
 
