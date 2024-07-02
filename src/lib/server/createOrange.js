@@ -64,6 +64,13 @@ export async function createCheck(params) {
     params.content.checkClose.payments.forEach((item, i) => {
       order.addPayment(item);
     });
+
+    try {
+      order.addAttribute(params.filial);
+    } catch (e) {
+      order.addAttribute('555555');
+    }
+
     //
     //console.log(order)
 
