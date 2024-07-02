@@ -65,14 +65,10 @@ export async function createCheck(params) {
       order.addPayment(item);
     });
 
-    try {
-      order.addAttribute(params.filial);
-    } catch (e) {
       try {
-          order.content.additionalAttribute = '555555';
+          order.content.additionalAttribute = params.filial;
       } catch (e) {
       }
-    }
 
     //
     //console.log(order)
