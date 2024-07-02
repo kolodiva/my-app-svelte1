@@ -68,7 +68,10 @@ export async function createCheck(params) {
     try {
       order.addAttribute(params.filial);
     } catch (e) {
-      order.addAttribute('555555');
+      try {
+          order.addAttribute('555555');
+      } catch (e) {
+      }
     }
 
     //
