@@ -95,7 +95,7 @@ order by filial`)
     let count;
 
     results.rows?.forEach((item, i) => {
-        total = '(' + item.artikul + ') ' + item.name + '\n' + 'MSC - ' + Number(item.qty1)  + '\n' + 'цена.розн: ' + Number(item.price) + (Number(item.price1) > 0 ? '\n' + 'цена.кропт: ' + Number(item.price1) : "")  + (Number(item.price2) > 0 ? '\n' + 'цена.кропт-5%: ' + Number(item.price2) : "") + (item.url ? '\n\n' + item.url : '');
+        total = '(' + item.artikul + ') ' + item.name + '\n' + 'MSC - ' + Number(item.qty1)  + '\n' + 'цена.розн: ' + Number(item.price) + (Number(item.price1) > 0 ? '\n' + 'цена.кропт: ' + Number(item.price1) : "")  + (Number(item.price2) > 0 ? '\n' + 'цена.кропт-6%: ' + Number(item.price2) : "") + (item.url ? '\n\n' + item.url : '');
     });
 
     //console.log(total);
