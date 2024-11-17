@@ -18,6 +18,8 @@ export const POST = async ({request}) => {
 	let msg;
 	let sql;
 
+	let pass;
+
 	botMessage = 'Есть контакт'
 	chatId = undefined
 
@@ -29,8 +31,9 @@ export const POST = async ({request}) => {
 		//
 		// await query(sql, [ 111111111, '/mimoerr', msg ])
 
+		pass = msg?.message?.text?.toLowerCase()?.trim()
 
-		botMessage 	= '/asktcd' + " " + msg?.message?.text?.toLowerCase()?.trim()
+		botMessage 	= '/asktcd' + " " + pass
 		chatId 		= msg?.message?.chat?.id
 
 	} catch (message) {
@@ -44,24 +47,34 @@ export const POST = async ({request}) => {
 	//
 	try {
 
-		//sql = `SELECT upserttask($1) AS "upserttaskResult";`
-		sql = `insert into commands(chat_id, info) values($1, $2)`;
+		if (pass=="5118") {
 
-		await query(sql, [ chatId, botMessage ])
+			sql = `SELECT upsertcheckpointprice($1) AS "upsertcheckpointprice";`
+			//sql = `insert into checkpointprices(chat_id) values($1)`;
 
-		//const result = await query(sql, [ JSON.stringify([ chatId, botMessage ])
+			await query(sql, [ chatId ])
 
-		//const {upserttaskResult} = result.rows[0]
+		} else {
 
-		//console.log(upserttaskResult)
-		//return new Response('Done')
+
+			//sql = `SELECT upserttask($1) AS "upserttaskResult";`
+			sql = `insert into commands(chat_id, info) values($1, $2)`;
+
+			await query(sql, [ chatId, botMessage ])
+
+			//const result = await query(sql, [ JSON.stringify([ chatId, botMessage ])
+
+			//const {upserttaskResult} = result.rows[0]
+
+			//console.log(upserttaskResult)
+			//return new Response('Done')
+		}
 
 		} catch (message) {
 
 			console.log(message);
 
 			throw error(400, message)
-
 	}
 
 	try {
@@ -70,7 +83,7 @@ export const POST = async ({request}) => {
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: "Задача добавлена"
+				 text: pass=="5118" ? "Вас понял, Все готово...", "Задача добавлена"
 		})
 
 		return new Response('Done')
