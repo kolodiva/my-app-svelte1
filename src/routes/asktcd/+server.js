@@ -83,7 +83,7 @@ export const POST = async ({request}) => {
 
 		const res = await axios.post(TELEGRAM_URI, {
 				 chat_id: chatId,
-				 text: pass=="5118" ? "Вас понял, Все готово...", "Задача добавлена"
+				 text: pass=="5118" ? "Вас понял, Все готово...":"Задача добавлена"
 		})
 
 		return new Response('Done')
