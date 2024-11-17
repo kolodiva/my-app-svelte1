@@ -78,11 +78,14 @@ order by filial1, date1 desc`)
   return res
 }
 
-export async function getStatShort(artikul) {
+export async function getStatShort(artikul, chatId=0) {
 
   const res = await poolPG
-  .query(`select filial, artikul, artikul_new, name, qty1, url, price
+  .query(`select filial, artikul, artikul_new, name, qty1, url, price,
+case when checkpointprices.chat_id is null then 0 else price1 end price1,
+case when checkpointprices.chat_id is null then 0 else price2 end price2
 from nomenklators1
+left join checkpointprices as checkpointprices on checkpointprices.chat_id=${chatId} and checkpointprices.status>0
 where artikul like '${artikul}'
 order by filial`)
   .then(results => {
@@ -92,7 +95,7 @@ order by filial`)
     let count;
 
     results.rows?.forEach((item, i) => {
-        total = '(' + item.artikul + ') ' + item.name + '\n' + 'MSC - ' + Number(item.qty1)  + '\n' + 'цена.розн: ' + Number(item.price) + (item.url ? '\n\n' + item.url : '');
+        total = '(' + item.artikul + ') ' + item.name + '\n' + 'MSC - ' + Number(item.qty1)  + '\n' + 'цена.розн: ' + Number(item.price) + (Number(item.price1) > 0 ? '\n' + 'цена.кропт: ' + Number(item.price1) : "")  + (Number(item.price2) > 0 ? '\n' + 'цена.кропт-5%: ' + Number(item.price2) : "") + (item.url ? '\n\n' + item.url : '');
     });
 
     //console.log(total);

@@ -39,7 +39,7 @@ export const POST = async ({request}) => {
 	//
 	try {
 
-			response = await getStatShort(artikul);
+			response = await getStatShort(artikul, chatId);
 
 		} catch (message) {
 
