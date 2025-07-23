@@ -19,6 +19,10 @@ const paymentPage = new PaymentPageSdk('000003148440001-48440001', {
 
     window.paymentPage = paymentPage;
 
+const checkout = new YooCheckout({ shopId: '1015017', secretKey: 'test_OOhKySiSrzvK4arigY9kNTPNaeqE7Zuq6R--T5K63O8' });
+
+console.log(checkout);
+
 
 });
 
