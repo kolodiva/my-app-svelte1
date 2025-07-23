@@ -1,5 +1,5 @@
 import { json, error } from '@sveltejs/kit'
-import { getStat } from '$lib/server/getData.js'
+//import { getStat } from '$lib/server/getData.js'
 
 
 export async function load() {
