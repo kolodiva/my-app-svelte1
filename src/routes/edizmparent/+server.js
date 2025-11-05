@@ -14,7 +14,7 @@ export const GET = async (event) => {
 
 	const guid = event.url.searchParams.get('guid')
 
-			const sql = `SELECT get_edizm_parent($1) AS "getEdizmParent";`
+			const sql = `SELECT get_edizm_parent($1) AS "getEdizm";`
 
 			const result = await query(sql, [guid])
 
