@@ -14,11 +14,11 @@ export const GET = async (event) => {
 
 	const guid = event.url.searchParams.get('guid')
 
-			const sql = `SELECT get_edizm_parent($1) AS "getEdizm";`
+			const sql = `SELECT get_edizm_parent($1) AS "getEdizmParent";`
 
 			const result = await query(sql, [guid])
 
-			const {getEdizm} = result.rows[0]
+			const {getEdizmParent} = result.rows[0]
 
-			return json(getEdizm)
+			return json(getEdizmParent)
 }
